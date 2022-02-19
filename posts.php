@@ -36,11 +36,13 @@ function signup()
 
 function login()
 {
-    $user = null;
-    if (!empty($_POST["username"])) {
-        $user = getUserByUsername($_POST["username"]);
-    } else if (!empty($_POST["email"])) {
-        $user = getUserByEmail($_POST["email"]);
+    if (empty($_POST["username"])) {
+        return null;
+    }
+
+    $user = getUserByUsername($_POST["username"]);
+    if (empty($user)) {
+        $user = getUserByEmail($_POST["username"]);
     }
 
     if ($user && $user["password"] == hash("sha512", $_POST["password"])) {

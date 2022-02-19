@@ -37,13 +37,14 @@ if (!empty($_POST)) {
             <div class="col-lg-8 tm-post-col">
                 <div class="tm-post-full">
                     <div class="mb-4">
-                        <form action="" class="mb-5 tm-comment-form">
+                        <form method="post" action="" class="mb-5 tm-comment-form">
                             <h2 class="tm-color-primary tm-post-title mb-4">Login information</h2>
                             <div class="mb-4">
-                                <input class="form-control" name="name" type="text" placeholder="Username or email">
+                                <input class="form-control" name="username" type="text" placeholder="Username or email"
+                                       required>
                             </div>
                             <div class="mb-4">
-                                <input class="form-control" name="email" type="text" placeholder="Password">
+                                <input class="form-control" name="password" type="text" placeholder="Password" required>
                             </div>
                             <div class="text-right">
                                 <button class="tm-btn tm-btn-primary tm-btn-small">Login</button>

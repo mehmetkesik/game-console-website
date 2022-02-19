@@ -32,26 +32,37 @@ if (!empty($_POST)) {
             <div class="col-lg-8 tm-post-col">
                 <div class="tm-post-full">
                     <div class="mb-4">
-                        <form action="" class="mb-5 tm-comment-form">
+                        <form method="post" action="" class="mb-5 tm-comment-form">
                             <h2 class="tm-color-primary tm-post-title mb-4">Signup information</h2>
                             <div class="mb-4">
-                                <input class="form-control" name="name" type="text" placeholder="Username">
+                                <input class="form-control" name="name" type="text" placeholder="Username" required>
                             </div>
                             <div class="mb-4">
-                                <input class="form-control" name="email" type="text" placeholder="Email">
+                                <input class="form-control" name="email" type="text" placeholder="Email" required>
                             </div>
                             <div class="mb-4">
-                                <input class="form-control" name="name" type="text" placeholder="Name">
+                                <input class="form-control" name="name" type="text" placeholder="Name" required>
                             </div>
                             <div class="mb-4">
-                                <input class="form-control" name="password" type="text" placeholder="Password">
+                                <input class="form-control" name="password" type="text" placeholder="Password" required>
                             </div>
                             <div class="mb-4">
                                 <input class="form-control" name="passwordagain" type="text"
-                                       placeholder="Password again">
+                                       placeholder="Password again" required>
+                            </div>
+                            <div class="mb-4">
+                                <span style="font-size:16px;">Birth Date:</span>
+                                <input class="form-control" name="birthdate" type="date" placeholder="Birth Date">
+                            </div>
+                            <div class="mb-4">
+                                <span style="font-size:16px;">Picture:</span>
+                                <input class="form-control" name="picture" type="file">
+                            </div>
+                            <div class="mb-4">
+                                <input class="form-control" name="title" type="text" placeholder="Title">
                             </div>
                             <div class="text-right">
-                                <button class="tm-btn tm-btn-primary tm-btn-small">Signup</button>
+                                <button class="tm-btn tm-btn-primary tm-btn-small" type="submit">Signup</button>
                             </div>
                         </form>
                     </div>
