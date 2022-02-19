@@ -1,1 +1,2 @@
 users -> email ve username unique olmalı.
+login & signup -> contact sayfasındaki form yapısı alınacak.
