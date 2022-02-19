@@ -12,14 +12,10 @@
     <div class="col-12 col-lg-4">
         <div class="d-flex justify-content-end">
             <a href="/?page=login">
-                <button class="tm-search-button user-button">
-                    Login
-                </button>
+                <button class="tm-btn tm-btn-primary tm-btn-small user-button">Login</button>
             </a>
             <a href="/?page=signup">
-                <button class="tm-search-button user-button">
-                    Signup
-                </button>
+                <button class="tm-btn tm-btn-primary tm-btn-small user-button">Signup</button>
             </a>
         </div>
     </div>

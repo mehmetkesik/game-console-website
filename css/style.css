@@ -44,7 +44,6 @@ hr {
 .tm-header {
     background-color: #0CC;
     color: white;
-
     position: fixed;
     top: 0;
     left: 0;
@@ -217,7 +216,7 @@ ul {
 .user-button {
     margin-left: 10px;
     color: #fff;
-    width: 100px !important;
+    padding: 8px 18px !important;
 }
 
 .tm-search-button {
