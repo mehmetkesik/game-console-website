@@ -1,7 +1,12 @@
 <?php
 if (!empty($_POST)) {
     include("posts.php");
-    echo signup();
+    $id = signup();
+    if ($id) {
+        header("Location: /?page=profile");
+    } else {
+        header("Location: /?page=signup");
+    }
 }
 ?>
 
@@ -32,10 +37,10 @@ if (!empty($_POST)) {
             <div class="col-lg-8 tm-post-col">
                 <div class="tm-post-full">
                     <div class="mb-4">
-                        <form method="post" action="" class="mb-5 tm-comment-form">
+                        <form method="post" action="" class="mb-5 tm-comment-form" enctype="multipart/form-data">
                             <h2 class="tm-color-primary tm-post-title mb-4">Signup information</h2>
                             <div class="mb-4">
-                                <input class="form-control" name="name" type="text" placeholder="Username" required>
+                                <input class="form-control" name="username" type="text" placeholder="Username" required>
                             </div>
                             <div class="mb-4">
                                 <input class="form-control" name="email" type="text" placeholder="Email" required>
@@ -52,7 +57,7 @@ if (!empty($_POST)) {
                             </div>
                             <div class="mb-4">
                                 <span style="font-size:16px;">Birth Date:</span>
-                                <input class="form-control" name="birthdate" type="date" placeholder="Birth Date">
+                                <input class="form-control" name="birth_date" type="date" placeholder="Birth Date">
                             </div>
                             <div class="mb-4">
                                 <span style="font-size:16px;">Picture:</span>

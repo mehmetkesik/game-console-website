@@ -28,7 +28,7 @@ if (!$game) {
         <div class="row tm-row">
             <div class="col-12">
                 <hr class="tm-hr-primary tm-mb-55">
-                <img src="/pics/<?php echo $game["picture"]; ?>" style="width:100%;" alt="Game Image"/>
+                <img src="/img/gamepics/<?php echo $game["picture"]; ?>" style="width:100%;" alt="Game Image"/>
             </div>
         </div>
         <div class="row tm-row">

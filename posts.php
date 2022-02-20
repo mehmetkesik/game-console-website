@@ -24,10 +24,29 @@ function signup()
     if (empty($_POST["password"])) {
         return null;
     }
+
     $user["password"] = hash("sha512", $_POST["password"]);
 
     $user["birth_date"] = empty($_POST["birth_date"]) ? null : $_POST["birth_date"];
-    $user["picture"] = empty($_POST["picture"]) ? null : $_POST["picture"];
+
+    if (!empty($_FILES["picture"])) {
+        if ($_FILES["picture"]["type"] == "image/png") {
+            $user["picture"] = $_POST["username"] . ".png";
+        } else if ($_FILES["picture"]["type"] == "image/jpeg") {
+            $user["picture"] = $_POST["username"] . ".jpeg";
+        } else {
+            $user["picture"] = null;
+        }
+
+        if ($user["picture"] != null) {
+            $directory = "img/userpics/";
+            move_uploaded_file($_FILES['picture']['tmp_name'], $directory . $user["picture"]);
+        }
+
+    } else {
+        $user["picture"] = null;
+    }
+
     $user["title"] = empty($_POST["title"]) ? null : $_POST["title"];
     $user["last_login_time"] = date('Y-m-d H:i:s');
 
