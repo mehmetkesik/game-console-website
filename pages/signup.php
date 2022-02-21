@@ -37,39 +37,56 @@ if (!empty($_POST)) {
             <div class="col-lg-8 tm-post-col">
                 <div class="tm-post-full">
                     <div class="mb-4">
-                        <form method="post" action="" class="mb-5 tm-comment-form" enctype="multipart/form-data">
+                        <form method="post" action="" class="mb-5 tm-comment-form" enctype="multipart/form-data"
+                              onsubmit="return signupControl();">
                             <h2 class="tm-color-primary tm-post-title mb-4">Signup information</h2>
                             <div class="mb-4">
-                                <input class="form-control" name="username" type="text" placeholder="Username" required>
+                                <input class="form-control" name="username" id="username" type="text" maxlength="50"
+                                       placeholder="Username" required>
                             </div>
                             <div class="mb-4">
-                                <input class="form-control" name="email" type="text" placeholder="Email" required>
+                                <input class="form-control" name="email" id="email" type="text" maxlength="50"
+                                       placeholder="Email" required>
                             </div>
                             <div class="mb-4">
-                                <input class="form-control" name="name" type="text" placeholder="Name" required>
+                                <input class="form-control" name="name" id="name" type="text" maxlength="50"
+                                       placeholder="Name" required>
                             </div>
                             <div class="mb-4">
-                                <input class="form-control" name="password" type="text" placeholder="Password" required>
+                                <input class="form-control" name="password" id="password" type="text" maxlength="50"
+                                       placeholder="Password" required>
                             </div>
                             <div class="mb-4">
-                                <input class="form-control" name="passwordagain" type="text"
+                                <input class="form-control" name="passwordagain" id="passwordagain" type="text"
+                                       maxlength="50"
                                        placeholder="Password again" required>
                             </div>
                             <div class="mb-4">
                                 <span style="font-size:16px;">Birth Date:</span>
-                                <input class="form-control" name="birth_date" type="date" placeholder="Birth Date">
+                                <input class="form-control" name="birth_date" id="birth_date" type="date"
+                                       placeholder="Birth Date">
                             </div>
                             <div class="mb-4">
                                 <span style="font-size:16px;">Picture:</span>
-                                <input class="form-control" name="picture" type="file">
+                                <input class="form-control" name="picture" id="picture" type="file">
                             </div>
                             <div class="mb-4">
-                                <input class="form-control" name="title" type="text" placeholder="Title">
+                                <input class="form-control" name="title" id="title" type="text" maxlength="250"
+                                       placeholder="Title">
                             </div>
                             <div class="text-right">
                                 <button class="tm-btn tm-btn-primary tm-btn-small" type="submit">Signup</button>
                             </div>
                         </form>
+                        <script type="text/javascript">
+                            function signupControl() {
+                                let username = document.getElementById("username");
+                                let email = document.getElementById("email");
+                                let password = document.getElementById("password");
+                                let passwordagain = document.getElementById("passwordagain");
+                                return false;
+                            }
+                        </script>
                     </div>
                 </div>
             </div>

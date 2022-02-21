@@ -40,11 +40,12 @@ if (!empty($_POST)) {
                         <form method="post" action="" class="mb-5 tm-comment-form">
                             <h2 class="tm-color-primary tm-post-title mb-4">Login information</h2>
                             <div class="mb-4">
-                                <input class="form-control" name="username" type="text" placeholder="Username or email"
-                                       required>
+                                <input class="form-control" name="username" type="text" maxlength="250"
+                                       placeholder="Username or email" required>
                             </div>
                             <div class="mb-4">
-                                <input class="form-control" name="password" type="text" placeholder="Password" required>
+                                <input class="form-control" name="password" type="text" maxlength="250"
+                                       placeholder="Password" required>
                             </div>
                             <div class="text-right">
                                 <button class="tm-btn tm-btn-primary tm-btn-small">Login</button>
