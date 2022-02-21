@@ -41,11 +41,11 @@ if (!empty($_POST)) {
                             <h2 class="tm-color-primary tm-post-title mb-4">Login information</h2>
                             <div class="mb-4">
                                 <input class="form-control" name="username" type="text" maxlength="250"
-                                       placeholder="Username or email" required>
+                                       pattern=".{3,}" placeholder="Username or email" required>
                             </div>
                             <div class="mb-4">
                                 <input class="form-control" name="password" type="text" maxlength="250"
-                                       placeholder="Password" required>
+                                       pattern=".{4,}" placeholder="Password" required>
                             </div>
                             <div class="text-right">
                                 <button class="tm-btn tm-btn-primary tm-btn-small">Login</button>

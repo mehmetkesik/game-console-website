@@ -30,7 +30,6 @@ if (!empty($_POST)) {
         <div class="row tm-row">
             <div class="col-12">
                 <hr class="tm-hr-primary tm-mb-55">
-
             </div>
         </div>
         <div class="row tm-row">
@@ -40,27 +39,32 @@ if (!empty($_POST)) {
                         <form method="post" action="" class="mb-5 tm-comment-form" enctype="multipart/form-data"
                               onsubmit="return signupControl();">
                             <h2 class="tm-color-primary tm-post-title mb-4">Signup information</h2>
+
+
                             <div class="mb-4">
-                                <input class="form-control" name="username" id="username" type="text" maxlength="50"
-                                       placeholder="Username" required>
+                                <input class="form-control" name="username" id="username" type="text"
+                                       pattern=".{3,}" maxlength="50" placeholder="Username (min 3 chars)" required>
                             </div>
                             <div class="mb-4">
-                                <input class="form-control" name="email" id="email" type="text" maxlength="50"
+                                <input class="form-control" name="email" id="email" type="email" maxlength="50"
                                        placeholder="Email" required>
                             </div>
                             <div class="mb-4">
                                 <input class="form-control" name="name" id="name" type="text" maxlength="50"
-                                       placeholder="Name" required>
+                                       pattern=".{3,}" placeholder="Name (min 3 chars)" required>
                             </div>
                             <div class="mb-4">
-                                <input class="form-control" name="password" id="password" type="text" maxlength="50"
-                                       placeholder="Password" required>
+                                <input class="form-control" name="password" id="password" type="password" maxlength="50"
+                                       pattern=".{4,}" placeholder="Password  (min 4 chars)" required>
                             </div>
                             <div class="mb-4">
-                                <input class="form-control" name="passwordagain" id="passwordagain" type="text"
-                                       maxlength="50"
-                                       placeholder="Password again" required>
+                                <input class="form-control" name="passwordagain" id="passwordagain" type="password"
+                                       maxlength="50" pattern=".{4,}" placeholder="Password again" required>
                             </div>
+                            <span id="passwordwarning"
+                                  style="font-size:16px;color:#a71d2a;display:none;padding:0;margin-left: 15px;">
+                                ** Passwords don't match. **
+                            </span>
                             <div class="mb-4">
                                 <span style="font-size:16px;">Birth Date:</span>
                                 <input class="form-control" name="birth_date" id="birth_date" type="date"
@@ -80,11 +84,16 @@ if (!empty($_POST)) {
                         </form>
                         <script type="text/javascript">
                             function signupControl() {
-                                let username = document.getElementById("username");
-                                let email = document.getElementById("email");
-                                let password = document.getElementById("password");
-                                let passwordagain = document.getElementById("passwordagain");
-                                return false;
+                                let passwordWarning = document.getElementById("passwordwarning");
+                                passwordWarning.style.display = "none";
+                                let password = document.getElementById("password").value;
+                                let passwordagain = document.getElementById("passwordagain").value;
+
+                                if (password !== passwordagain) {
+                                    passwordWarning.style.display = 'list-item';
+                                    return false;
+                                }
+                                return true;
                             }
                         </script>
                     </div>
