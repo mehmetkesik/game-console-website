@@ -36,8 +36,8 @@ if (!empty($_POST)) {
             <div class="col-lg-8 tm-post-col">
                 <div class="tm-post-full">
                     <div class="mb-4">
-                        <form method="post" action="" class="mb-5 tm-comment-form" enctype="multipart/form-data"
-                              onsubmit="return signupControl();">
+                        <form id="signupform" method="post" action="" class="mb-5 tm-comment-form"
+                              enctype="multipart/form-data" onsubmit="signupControl(); return false;">
                             <h2 class="tm-color-primary tm-post-title mb-4">Signup information</h2>
 
 
@@ -83,7 +83,7 @@ if (!empty($_POST)) {
                             </div>
                         </form>
                         <script type="text/javascript">
-                            function signupControl() {
+                            async function signupControl() {
                                 let passwordWarning = document.getElementById("passwordwarning");
                                 passwordWarning.style.display = "none";
                                 let password = document.getElementById("password").value;
@@ -93,7 +93,19 @@ if (!empty($_POST)) {
                                     passwordWarning.style.display = 'list-item';
                                     return false;
                                 }
+                                let result = await sha512(password)
+
+                                document.getElementById("password").value = result;
+                                document.getElementById("signupform").submit();
+
                                 return true;
+                            }
+
+                            function sha512(str) {
+                                return crypto.subtle.digest("SHA-512", new TextEncoder("utf-8").encode(str)).then(buf => {
+                                    return Array.prototype.map.call(new Uint8Array(buf),
+                                        x => (('00' + x.toString(16)).slice(-2))).join('');
+                                });
                             }
                         </script>
                     </div>

@@ -1,2 +1,0 @@
-users -> email ve username unique olmalı.
-users -> admin ve status alanları eklenecek.
