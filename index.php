@@ -44,6 +44,10 @@ if (!empty($_GET['page'])) {
         case 'signup':
             include("pages/signup.php");
             break;
+        case 'signout':
+            session_destroy();
+            header('Location: /?page=login');
+            break;
         case 'postgame':
             if (!empty($_POST)) {
                 include("posts.php");

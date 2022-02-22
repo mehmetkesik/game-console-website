@@ -11,12 +11,21 @@
     </div>
     <div class="col-12 col-lg-4">
         <div class="d-flex justify-content-end">
-            <a href="/?page=login">
-                <button class="tm-btn tm-btn-primary tm-btn-small user-button">Login</button>
-            </a>
-            <a href="/?page=signup">
-                <button class="tm-btn tm-btn-primary tm-btn-small user-button">Signup</button>
-            </a>
+            <?php if (empty($_SESSION["user"])) { ?>
+                <a href="/?page=login">
+                    <button class="tm-btn tm-btn-primary tm-btn-small user-button">Login</button>
+                </a>
+                <a href="/?page=signup">
+                    <button class="tm-btn tm-btn-primary tm-btn-small user-button">Signup</button>
+                </a>
+            <?php } else { ?>
+                <a href="/?page=signout">
+                    <button class="tm-btn tm-btn-primary tm-btn-small user-button" style="background-color: #871C2B"
+                            onclick="signout();">
+                        Signout
+                    </button>
+                </a>
+            <?php } ?>
         </div>
     </div>
 </div>

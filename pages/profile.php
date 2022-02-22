@@ -1,11 +1,11 @@
 <?php
 if (empty($_SESSION["user"])) {
-    header("Location: /");
+    header("Location: /?page=login");
     exit(0);
 }
 
 if (!empty($_POST)) {
-    //updating user
+    //updating user - this page will be edited
     /*include("posts.php");
 
     if ($result && is_numeric($result)) {
@@ -22,7 +22,7 @@ if (!empty($_POST)) {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>PlayStation 5 Game Console - Signup</title>
+    <title>PlayStation 5 Game Console - Profile</title>
     <?php
     include "inc/head.php";
     ?>
@@ -45,9 +45,9 @@ if (!empty($_POST)) {
             <div class="col-lg-8 tm-post-col">
                 <div class="tm-post-full">
                     <div class="mb-4">
-                        <form id="signupform" method="post" action="" class="mb-5 tm-comment-form"
-                              enctype="multipart/form-data" onsubmit="signupControl(); return false;">
-                            <h2 class="tm-color-primary tm-post-title mb-4">Signup information</h2>
+                        <form id="profileform" method="post" action="" class="mb-5 tm-comment-form"
+                              enctype="multipart/form-data" onsubmit="profileControl(); return false;">
+                            <h2 class="tm-color-primary tm-post-title mb-4">Profile information</h2>
 
                             <p style="font-size:15px;color:red;"><?php if (!empty($_GET["error"])) {
                                     echo $_GET["error"];
@@ -95,7 +95,7 @@ if (!empty($_POST)) {
                             </div>
                         </form>
                         <script type="text/javascript">
-                            async function signupControl() {
+                            async function profileControl() {
                                 let passwordWarning = document.getElementById("passwordwarning");
                                 passwordWarning.style.display = "none";
                                 let password = document.getElementById("password").value;
@@ -107,7 +107,7 @@ if (!empty($_POST)) {
                                 }
 
                                 document.getElementById("password").value = await sha512(password);
-                                document.getElementById("signupform").submit();
+                                document.getElementById("profileform").submit();
 
                                 return true;
                             }
