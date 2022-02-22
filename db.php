@@ -74,18 +74,22 @@ function getUserByEmail($email)
 
 function addUser($user)
 {
-    $db = openDb();
-    $query = $db->prepare("INSERT INTO users SET name = ?, username = ?, email = ?, 
+    try {
+        $db = openDb();
+        $query = $db->prepare("INSERT INTO users SET name = ?, username = ?, email = ?, 
         password = ?, birth_date = ?, picture = ?, title = ?, last_login_time = ?");
-    $insert = $query->execute(array(
-        $user["name"], $user["username"], $user["email"], $user["password"],
-        $user["birth_date"], $user["picture"], $user["title"], $user["last_login_time"]
-    ));
-    if ($insert) {
-        $last_id = $db->lastInsertId();
-        return $last_id;
+        $insert = $query->execute(array(
+            $user["name"], $user["username"], $user["email"], $user["password"],
+            $user["birth_date"], $user["picture"], $user["title"], $user["last_login_time"]
+        ));
+        if ($insert) {
+            $last_id = $db->lastInsertId();
+            return $last_id;
+        }
+        return null;
+    } catch (PDOException $e) {
+        return $e->getMessage();
     }
-    return null;
 }
 
 function updateUser($user)

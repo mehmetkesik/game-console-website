@@ -1,11 +1,14 @@
 <?php
 if (!empty($_POST)) {
     include("posts.php");
-    $id = signup();
-    if ($id) {
+    $result = signup();
+    if ($result && is_numeric($result)) {
         header("Location: /?page=profile");
+    } else if ($result) {
+        header("Location: /?page=signup&error=$result");
     } else {
-        header("Location: /?page=signup");
+        $error = "Something went wrong!";
+        header("Location: /?page=signup&error=$error");
     }
 }
 ?>
@@ -40,6 +43,9 @@ if (!empty($_POST)) {
                               enctype="multipart/form-data" onsubmit="signupControl(); return false;">
                             <h2 class="tm-color-primary tm-post-title mb-4">Signup information</h2>
 
+                            <p style="font-size:15px;color:red;"><?php if (!empty($_GET["error"])) {
+                                    echo $_GET["error"];
+                                } ?></p>
 
                             <div class="mb-4">
                                 <input class="form-control" name="username" id="username" type="text"
@@ -93,9 +99,8 @@ if (!empty($_POST)) {
                                     passwordWarning.style.display = 'list-item';
                                     return false;
                                 }
-                                let result = await sha512(password)
 
-                                document.getElementById("password").value = result;
+                                document.getElementById("password").value = await sha512(password);
                                 document.getElementById("signupform").submit();
 
                                 return true;
