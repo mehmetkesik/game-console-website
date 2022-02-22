@@ -31,7 +31,7 @@ if (!empty($_GET['page'])) {
                 $GLOBALS["active"] = "profile";
                 include("pages/profile.php");
             } else {
-                header('Location: /');
+                header('Location: /?page=login');
             }
             break;
         case 'about-console':
