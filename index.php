@@ -1,5 +1,5 @@
 <?php
-//session_start();
+session_start();
 
 $active = "home";
 
@@ -22,6 +22,14 @@ if (!empty($_GET['page'])) {
             if (!empty($_GET['id'])) {
                 $GLOBALS["active"] = "game";
                 include("pages/game.php");
+            } else {
+                header('Location: /');
+            }
+            break;
+        case 'profile':
+            if (!empty($_SESSION["user"])) {
+                $GLOBALS["active"] = "profile";
+                include("pages/profile.php");
             } else {
                 header('Location: /');
             }

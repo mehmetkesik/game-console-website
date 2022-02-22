@@ -1,9 +1,15 @@
 <?php
+
+if (!empty($_SESSION["user"])) {
+    header("Location: /?page=profile");
+    exit(0);
+}
+
 if (!empty($_POST)) {
     include("posts.php");
     $user = login();
     if ($user) {
-        //print_r($user); //Oturum tanımlaması yapılacak.
+        $_SESSION["user"] = $user;
         header("Location: /?page=profile");
     } else {
         $error = "Username or password incorrect! $user";

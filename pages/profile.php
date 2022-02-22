@@ -1,21 +1,21 @@
 <?php
-if (!empty($_SESSION["user"])) {
-    header("Location: /?page=profile");
+if (empty($_SESSION["user"])) {
+    header("Location: /");
     exit(0);
 }
 
 if (!empty($_POST)) {
-    include("posts.php");
-    $result = signup();
+    //updating user
+    /*include("posts.php");
+
     if ($result && is_numeric($result)) {
-        $_SESSION["user"] = getUserById($result);
         header("Location: /?page=profile");
     } else if ($result) {
         header("Location: /?page=signup&error=$result");
     } else {
         $error = "Something went wrong!";
         header("Location: /?page=signup&error=$error");
-    }
+    }*/
 }
 ?>
 
