@@ -95,12 +95,21 @@ function addUser($user)
 function updateUser($user)
 {
     $db = openDb();
-    $query = $db->prepare("UPDATE users SET name = ?, username = ?, email = ?, 
-        password = ?, birth_date = ?, picture = ?, last_login_time = ?");
+    $query = $db->prepare("UPDATE users SET name = ?, email = ?, birth_date = ? WHERE id = ?");
     $update = $query->execute(array(
-        $user["name"], $user["username"], $user["email"], $user["password"],
-        $user["birth_date"], $user["picture"], $user["last_login_time"]
+        $user["name"], $user["email"], $user["birth_date"], $user["id"]
     ));
+    if ($update) {
+        return true;
+    }
+    return null;
+}
+
+function updateUserPassword($password, $userId)
+{
+    $db = openDb();
+    $query = $db->prepare("UPDATE users SET password = ? WHERE id = ?");
+    $update = $query->execute(array($password, $userId));
     if ($update) {
         return true;
     }
