@@ -84,11 +84,8 @@ if (!empty($_POST)) {
                             </div>
                             <div class="mb-4">
                                 <span style="font-size:16px;">Picture:</span>
-                                <input class="form-control" name="picture" id="picture" type="file">
-                            </div>
-                            <div class="mb-4">
-                                <input class="form-control" name="title" id="title" type="text" maxlength="250"
-                                       placeholder="Title">
+                                <input class="form-control" name="picture" id="picture" type="file"
+                                       accept="image/png, image/jpeg">
                             </div>
                             <div class="text-right">
                                 <button class="tm-btn tm-btn-primary tm-btn-small" type="submit">Signup</button>

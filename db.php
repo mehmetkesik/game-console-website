@@ -77,10 +77,10 @@ function addUser($user)
     try {
         $db = openDb();
         $query = $db->prepare("INSERT INTO users SET name = ?, username = ?, email = ?, 
-        password = ?, birth_date = ?, picture = ?, title = ?, last_login_time = ?");
+        password = ?, birth_date = ?, picture = ?, last_login_time = ?");
         $insert = $query->execute(array(
             $user["name"], $user["username"], $user["email"], $user["password"],
-            $user["birth_date"], $user["picture"], $user["title"], $user["last_login_time"]
+            $user["birth_date"], $user["picture"], $user["last_login_time"]
         ));
         if ($insert) {
             $last_id = $db->lastInsertId();
@@ -96,10 +96,10 @@ function updateUser($user)
 {
     $db = openDb();
     $query = $db->prepare("UPDATE users SET name = ?, username = ?, email = ?, 
-        password = ?, birth_date = ?, picture = ?, title = ?, last_login_time = ?");
+        password = ?, birth_date = ?, picture = ?, last_login_time = ?");
     $update = $query->execute(array(
         $user["name"], $user["username"], $user["email"], $user["password"],
-        $user["birth_date"], $user["picture"], $user["title"], $user["last_login_time"]
+        $user["birth_date"], $user["picture"], $user["last_login_time"]
     ));
     if ($update) {
         return true;

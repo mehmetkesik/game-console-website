@@ -55,7 +55,8 @@ if (!empty($_POST)) {
 
                         <figure class="tm-comment-figure">
                             <img src="img/comment-1.jpg" alt="Image" class="mb-2 rounded-circle img-thumbnail">
-                            <figcaption class="tm-color-primary text-left pl-3"><?php echo $user["name"]; ?></figcaption>
+                            <figcaption
+                                    class="tm-color-primary text-left pl-3"><?php echo $user["name"]; ?></figcaption>
                         </figure>
                         <br/>
 
@@ -73,7 +74,7 @@ if (!empty($_POST)) {
                             </label>
                             <div class="col-sm-9">
                                 <input class="form-control" name="email" id="email" type="email" maxlength="50"
-                                       placeholder="Email" required>
+                                       placeholder="Email" value="<?php echo $user['email']; ?>" required>
                             </div>
                         </div>
                         <div class="form-group row mb-4">
@@ -81,15 +82,8 @@ if (!empty($_POST)) {
                             </label>
                             <div class="col-sm-9">
                                 <input class="form-control" name="name" id="name" type="text" maxlength="50"
-                                       pattern=".{3,}" placeholder="Name (min 3 chars)" required>
-                            </div>
-                        </div>
-                        <div class="form-group row mb-4">
-                            <label for="password" class="col-sm-3 col-form-label text-left tm-color-primary">Password
-                            </label>
-                            <div class="col-sm-9">
-                                <input class="form-control" name="password" id="password" type="password" maxlength="50"
-                                       pattern=".{4,}" placeholder="Password  (min 4 chars)" required>
+                                       pattern=".{3,}" placeholder="Name (min 3 chars)"
+                                       value="<?php echo $user['name']; ?>" required>
                             </div>
                         </div>
                         <div class="form-group row mb-4">
@@ -98,27 +92,21 @@ if (!empty($_POST)) {
                             </label>
                             <div class="col-sm-9">
                                 <input class="form-control" name="birth_date" id="birth_date" type="date"
-                                       placeholder="Birth Date">
+                                       placeholder="Birth Date"
+                                       value="<?php echo explode(' ', $user['birth_date'])[0]; ?>">
                             </div>
                         </div>
                         <div class="form-group row mb-4">
                             <label for="picture" class="col-sm-3 col-form-label text-left tm-color-primary">Picture
                             </label>
                             <div class="col-sm-9">
-                                <input class="form-control" name="picture" id="picture" type="file">
-                            </div>
-                        </div>
-                        <div class="form-group row mb-4">
-                            <label for="title" class="col-sm-3 col-form-label text-left tm-color-primary">Title
-                            </label>
-                            <div class="col-sm-9">
-                                <input class="form-control" name="title" id="title" type="text" maxlength="250"
-                                       placeholder="Title">
+                                <input class="form-control" name="picture" id="picture" type="file"
+                                       accept="image/png, image/jpeg">
                             </div>
                         </div>
 
                         <div class="text-right">
-                            <button class="tm-btn tm-btn-primary tm-btn-small" type="submit">Signup</button>
+                            <button class="tm-btn tm-btn-primary tm-btn-small" type="submit">Update</button>
                         </div>
                     </form>
                     <script type="text/javascript">
@@ -146,6 +134,31 @@ if (!empty($_POST)) {
                             });
                         }
                     </script>
+
+                    <!-- ----------------------------------------- -->
+
+                    <form id="passwordform" method="post" action="" class="mb-5 tm-comment-form">
+                        <h4 class="tm-color-primary tm-post-title mb-4" style="font-size:1.3rem;">Change Password</h4>
+                        <div class="form-group row mb-4">
+                            <div class="col-12">
+                                <input class="form-control" name="password" id="password" type="password" maxlength="50"
+                                       pattern=".{4,}" placeholder="New Password  (min 4 chars)" required>
+                            </div>
+                        </div>
+                        <div class="form-group row mb-4">
+                            <div class="col-12">
+                                <input class="form-control" name="passwordagain" id="passwordagain"
+                                       type="password" maxlength="50" pattern=".{4,}" placeholder="New Password Again"
+                                       required>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <button class="tm-btn tm-btn-primary tm-btn-small" type="submit"
+                                    style="padding: 5px 20px;font-size:1rem;">Change
+                            </button>
+                        </div>
+                    </form>
+
                 </div>
             </div>
 
