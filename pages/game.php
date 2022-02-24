@@ -6,6 +6,22 @@ $game = getGame($id);
 if (!$game) {
     header("Location: /");
 }
+
+if (!empty($_POST) && !empty($_SESSION["user"])) {
+    $user = $_SESSION["user"];
+    $comment = $_POST["comment"];
+    $gameId = $game["id"];
+    addComment($user["id"], $gameId, $comment);
+    header("Location: /?page=game&id=$gameId");
+    exit(0);
+}
+
+$comments = getComments($game["id"]);
+
+for ($i = 0; $i < count($comments); $i++) {
+    $comments[$i]["user"] = getUserById($comments[$i]["user_id"]);
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -89,77 +105,31 @@ if (!$game) {
                                     sapien vel, euismod turpis.
                                 </p>
                                 <div class="d-flex justify-content-between">
-                                    <a href="#" class="tm-color-primary">REPLY</a>
-                                    <span class="tm-color-primary">June 14, 2020</span>
+                                    <a href="#" class="tm-color-primary"></a>
+                                    <span class="tm-color-primary text-right">June 14, 2020</span>
                                 </div>
                             </div>
                         </div>
-                        <div class="tm-comment-reply tm-mb-45">
-                            <hr>
-                            <div class="tm-comment">
-                                <figure class="tm-comment-figure">
-                                    <img src="img/comment-2.jpg" alt="Image" class="mb-2 rounded-circle img-thumbnail">
-                                    <figcaption class="tm-color-primary text-center">Jewel Soft</figcaption>
-                                </figure>
-                                <p>
-                                    Nunc et eros quis enim feugiat tincidunt et vitae dui.
-                                    Nullam consectetur justo ac ex laoreet rhoncus. Nunc
-                                    id leo pretium, faucibus sapien vel, euismod turpis.
-                                </p>
-                            </div>
-                            <span class="d-block text-right tm-color-primary">June 21, 2020</span>
-                        </div>
-                        <form action="" class="mb-5 tm-comment-form">
-                            <h2 class="tm-color-primary tm-post-title mb-4">Your comment</h2>
-                            <div class="mb-4">
-                                <input class="form-control" name="name" type="text">
-                            </div>
-                            <div class="mb-4">
-                                <input class="form-control" name="email" type="text">
-                            </div>
-                            <div class="mb-4">
-                                <textarea class="form-control" name="message" rows="6"></textarea>
-                            </div>
-                            <div class="text-right">
-                                <button class="tm-btn tm-btn-primary tm-btn-small">Submit</button>
-                            </div>
-                        </form>
+
+                        <?php if (!empty($_SESSION["user"])) { ?>
+                            <form method="post" action="" class="mb-5 tm-comment-form">
+                                <h2 class="tm-color-primary tm-post-title mb-4">Your comment</h2>
+                                <div class="mb-4">
+                                <textarea class="form-control" name="comment" rows="6"
+                                          placeholder="Type your comment.." required></textarea>
+                                </div>
+                                <div class="text-right">
+                                    <button class="tm-btn tm-btn-primary tm-btn-small" type="submit">Submit</button>
+                                </div>
+                            </form>
+                        <?php } ?>
+
                     </div>
                 </div>
             </div>
-            <aside class="col-lg-4 tm-aside-col">
-                <div class="tm-post-sidebar">
-                    <hr class="mb-3 tm-hr-primary">
-                    <h2 class="mb-4 tm-post-title tm-color-primary">Game Video</h2>
-                    <iframe src="https://www.youtube.com/embed/cxXvYJyBlc4"
-                            title="YouTube video player" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen style="width:100%;"></iframe>
-                    <hr class="mb-3 tm-hr-primary">
-                    <h2 class="tm-mb-40 tm-post-title tm-color-primary">Related Posts</h2>
-                    <a href="#" class="d-block tm-mb-40">
-                        <figure>
-                            <img src="img/img-02.jpg" alt="Image" class="mb-3 img-fluid">
-                            <figcaption class="tm-color-primary">Duis mollis diam nec ex viverra scelerisque a sit
-                            </figcaption>
-                        </figure>
-                    </a>
-                    <a href="#" class="d-block tm-mb-40">
-                        <figure>
-                            <img src="img/img-05.jpg" alt="Image" class="mb-3 img-fluid">
-                            <figcaption class="tm-color-primary">Integer quis lectus eget justo ullamcorper
-                                ullamcorper
-                            </figcaption>
-                        </figure>
-                    </a>
-                    <a href="#" class="d-block tm-mb-40">
-                        <figure>
-                            <img src="img/img-06.jpg" alt="Image" class="mb-3 img-fluid">
-                            <figcaption class="tm-color-primary">Nam lobortis nunc sed faucibus commodo</figcaption>
-                        </figure>
-                    </a>
-                </div>
-            </aside>
+
+            <?php include("pages/inc/sidebar.php"); ?>
+
         </div>
 
         <?php include("pages/inc/footer.php"); ?>

@@ -77,10 +77,10 @@ function addUser($user)
     try {
         $db = openDb();
         $query = $db->prepare("INSERT INTO users SET name = ?, username = ?, email = ?, 
-        password = ?, birth_date = ?, picture = ?, last_login_time = ?");
+        password = ?, birth_date = ?");
         $insert = $query->execute(array(
             $user["name"], $user["username"], $user["email"], $user["password"],
-            $user["birth_date"], $user["picture"], $user["last_login_time"]
+            $user["birth_date"]
         ));
         if ($insert) {
             $last_id = $db->lastInsertId();
@@ -174,6 +174,35 @@ function updateGame($game)
     ));
     if ($update) {
         return true;
+    }
+    return null;
+}
+
+function getComments($gameId)
+{
+    $db = openDb();
+    $query = $db->prepare("SELECT * FROM comments WHERE game_id = :id");
+    $query->bindValue(':id', $gameId);
+    $query->execute();
+
+    //$games = [];
+    return $query->fetchAll(PDO::FETCH_ASSOC);
+    /*if ($query->rowCount()) {
+        foreach ($query as $row) {
+            array_push($games, $row);
+        }
+    }
+    return $games;*/
+}
+
+function addComment($userId, $gameId, $comment)
+{
+    $db = openDb();
+    $query = $db->prepare("INSERT INTO comments SET user_id = ?, game_id = ?, comment = ?");
+    $insert = $query->execute(array($userId, $gameId, $comment));
+    if ($insert) {
+        $last_id = $db->lastInsertId();
+        return $last_id;
     }
     return null;
 }
