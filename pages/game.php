@@ -92,24 +92,26 @@ for ($i = 0; $i < count($comments); $i++) {
                     <div>
                         <h2 class="tm-color-primary tm-post-title">Comments</h2>
                         <hr class="tm-hr-primary tm-mb-45">
-                        <div class="tm-comment tm-mb-45">
-                            <figure class="tm-comment-figure">
-                                <img src="img/comment-1.jpg" alt="Image" class="mb-2 rounded-circle img-thumbnail">
-                                <figcaption class="tm-color-primary text-center">Mark Sonny</figcaption>
-                            </figure>
-                            <div>
-                                <p>
-                                    Praesent aliquam ex vel lectus ornare tritique. Nunc et eros
-                                    quis enim feugiat tincidunt et vitae dui. Nullam consectetur
-                                    justo ac ex laoreet rhoncus. Nunc id leo pretium, faucibus
-                                    sapien vel, euismod turpis.
-                                </p>
-                                <div class="d-flex justify-content-between">
-                                    <a href="#" class="tm-color-primary"></a>
-                                    <span class="tm-color-primary text-right">June 14, 2020</span>
+
+                        <?php foreach ($comments as $comment) { ?>
+                            <div class="tm-comment tm-mb-45">
+                                <figure class="tm-comment-figure">
+                                    <img src="img/comment-1.jpg" alt="Image" class="mb-2 rounded-circle img-thumbnail">
+                                    <figcaption class="tm-color-primary text-center">
+                                        <?php echo $comment["user"]["name"]; ?>
+                                    </figcaption>
+                                </figure>
+                                <div style="width:100%;">
+                                    <p style="word-wrap: break-word;">
+                                        <?php echo $comment["comment"]; ?>
+                                    </p>
+                                    <div class="d-flex justify-content-between">
+                                        <a href="#" class="tm-color-primary"></a>
+                                        <span class="tm-color-primary text-right">June 14, 2020</span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        <?php } ?>
 
                         <?php if (!empty($_SESSION["user"])) { ?>
                             <form method="post" action="" class="mb-5 tm-comment-form">
