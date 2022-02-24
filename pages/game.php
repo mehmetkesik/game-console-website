@@ -52,9 +52,7 @@ for ($i = 0; $i < count($comments); $i++) {
                 <div class="tm-post-full">
                     <div class="mb-4">
                         <h2 class="pt-2 tm-color-primary tm-post-title"><?php echo $game["name"]; ?></h2>
-                        <p class="tm-mb-40">Release Date: <b><?php echo
-                                DateTime::createFromFormat("Y-m-d H:i:s", $game["release_date"])
-                                    ->format('F j, Y'); ?> </b>
+                        <p class="tm-mb-40">Release Date: <b><?php echo prettyDate($game["release_date"]); ?></b>
                             <br/>
                             Price: <b><?php echo $game["price"]; ?> £</b>
                             <br/>
@@ -96,7 +94,17 @@ for ($i = 0; $i < count($comments); $i++) {
                         <?php foreach ($comments as $comment) { ?>
                             <div class="tm-comment tm-mb-45">
                                 <figure class="tm-comment-figure">
-                                    <img src="img/comment-1.jpg" alt="Image" class="mb-2 rounded-circle img-thumbnail">
+                                    <?php
+                                    $image = "img/user-icon.png";
+                                    if (file_exists("img/userpics/" . $comment["user"]["username"] . ".png")) {
+                                        $image = "img/userpics/" . $comment["user"]["username"] . ".png";
+                                    } else if (file_exists("img/userpics/" . $comment["user"]["username"] . ".jpeg")) {
+                                        $image = "img/userpics/" . $comment["user"]["username"] . ".jpeg";
+                                    }
+                                    ?>
+                                    <img src="<?php echo $image; ?>" alt="Image"
+                                         class="mb-2 rounded-circle img-thumbnail"
+                                         style="width:100px;height:100px;">
                                     <figcaption class="tm-color-primary text-center">
                                         <?php echo $comment["user"]["name"]; ?>
                                     </figcaption>
@@ -107,7 +115,9 @@ for ($i = 0; $i < count($comments); $i++) {
                                     </p>
                                     <div class="d-flex justify-content-between">
                                         <a href="#" class="tm-color-primary"></a>
-                                        <span class="tm-color-primary text-right">June 14, 2020</span>
+                                        <span class="tm-color-primary text-right">
+                                            <?php echo prettyDate($comment["time"]); ?>
+                                        </span>
                                     </div>
                                 </div>
                             </div>

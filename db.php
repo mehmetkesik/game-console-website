@@ -233,3 +233,8 @@ function slugify($text)
     // Return result
     return $text;
 }
+
+function prettyDate($date)
+{
+    return DateTime::createFromFormat("Y-m-d H:i:s", $date)->format('M j, Y');
+}
