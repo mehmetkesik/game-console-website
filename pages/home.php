@@ -1,10 +1,15 @@
+<?php
+include("db.php");
+$console = getConsole();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>PlayStation 5 Game Console</title>
     <?php
     include "inc/head.php";
     ?>
-    <title>PlayStation 5 Game Console</title>
 </head>
 <body>
 
@@ -12,196 +17,182 @@
 
 <div class="container-fluid">
     <main class="tm-main">
-        <!-- Search form -->
-        <div class="row tm-row">
+
+        <?php include("pages/inc/header.php"); ?>
+
+        <div class="row tm-row tm-mb-45">
             <div class="col-12">
-                <form method="GET" class="form-inline tm-mb-80 tm-search-form">
-                    <input class="form-control tm-search-input" name="query" type="text" placeholder="Search..."
-                           aria-label="Search">
-                    <button class="tm-search-button" type="submit">
-                        <i class="fas fa-search tm-search-icon" aria-hidden="true"></i>
-                    </button>
-                </form>
+                <hr class="tm-hr-primary tm-mb-55">
+                <img src="img/ps5.jpeg" alt="Image" class="img-fluid">
             </div>
         </div>
-        <div class="row tm-row">
-            <article class="col-12 col-md-6 tm-post">
-                <hr class="tm-hr-primary">
-                <a href="post.html" class="effect-lily tm-post-link tm-pt-60">
-                    <div class="tm-post-link-inner">
-                        <img src="img/img-01.jpg" alt="Image" class="img-fluid">
-                    </div>
-                    <span class="position-absolute tm-new-badge">New</span>
-                    <h2 class="tm-pt-30 tm-color-primary tm-post-title">Simple and useful HTML layout</h2>
-                </a>
-                <p class="tm-pt-30">
-                    There is a clickable image with beautiful hover effect and active title link for each post item.
-                    Left side is a sticky menu bar. Right side is a blog content that will scroll up and down.
-                </p>
-                <div class="d-flex justify-content-between tm-pt-45">
-                    <span class="tm-color-primary">Travel . Events</span>
-                    <span class="tm-color-primary">June 24, 2020</span>
-                </div>
-                <hr>
-                <div class="d-flex justify-content-between">
-                    <span>36 comments</span>
-                    <span>by Admin Nat</span>
-                </div>
-            </article>
-            <article class="col-12 col-md-6 tm-post">
-                <hr class="tm-hr-primary">
-                <a href="post.html" class="effect-lily tm-post-link tm-pt-60">
-                    <div class=" tm-post-link-inner">
-                        <img src="img/img-02.jpg" alt="Image" class="img-fluid">
-                    </div>
-                    <span class="position-absolute tm-new-badge">New</span>
-                    <h2 class="tm-pt-30 tm-color-primary tm-post-title">Multi-purpose blog template</h2>
-                </a>
-                <p class="tm-pt-30">
-                    <a rel="nofollow" href="https://templatemo.com/tm-553-xtra-blog" target="_blank">Xtra Blog</a> is a
-                    multi-purpose HTML CSS template from TemplateMo website.
-                    Blog list, single post, about, contact pages are included. Left sidebar fixed width and content area
-                    is a fluid full-width.
-                </p>
-                <div class="d-flex justify-content-between tm-pt-45">
-                    <span class="tm-color-primary">Creative . Design . Business</span>
-                    <span class="tm-color-primary">June 16, 2020</span>
-                </div>
-                <hr>
-                <div class="d-flex justify-content-between">
-                    <span>48 comments</span>
-                    <span>by Admin Sam</span>
-                </div>
-            </article>
-            <article class="col-12 col-md-6 tm-post">
-                <hr class="tm-hr-primary">
-                <a href="post.html" class="effect-lily tm-post-link tm-pt-20">
-                    <div class="tm-post-link-inner">
-                        <img src="img/img-03.jpg" alt="Image" class="img-fluid">
-                    </div>
-                    <h2 class="tm-pt-30 tm-color-primary tm-post-title">How can you apply Xtra Blog</h2>
-                </a>
-                <p class="tm-pt-30">
-                    You are <u>allowed</u> to convert this template as any kind of CMS theme or template for your custom
-                    website builder.
-                    You can also use this for your clients. Thank you for choosing us.
-                </p>
-                <div class="d-flex justify-content-between tm-pt-45">
-                    <span class="tm-color-primary">Music . Audio</span>
-                    <span class="tm-color-primary">June 11, 2020</span>
-                </div>
-                <hr>
-                <div class="d-flex justify-content-between">
-                    <span>24 comments</span>
-                    <span>by John Walker</span>
-                </div>
-            </article>
-            <article class="col-12 col-md-6 tm-post">
-                <hr class="tm-hr-primary">
-                <a href="post.html" class="effect-lily tm-post-link tm-pt-20">
-                    <div class="tm-post-link-inner">
-                        <img src="img/img-04.jpg" alt="Image" class="img-fluid">
-                    </div>
-                    <h2 class="tm-pt-30 tm-color-primary tm-post-title">A little restriction to apply</h2>
-                </a>
-                <p class="tm-pt-30">
-                    You are <u>not allowed</u> to re-distribute this template as a downloadable ZIP file on any template
-                    collection
-                    website. This is strongly prohibited as we worked hard for this template. Please contact TemplateMo
-                    for more information.
-                </p>
-                <div class="d-flex justify-content-between tm-pt-45">
-                    <span class="tm-color-primary">Artworks . Design</span>
-                    <span class="tm-color-primary">June 4, 2020</span>
-                </div>
-                <hr>
-                <div class="d-flex justify-content-between">
-                    <span>72 comments</span>
-                    <span>by Admin Sam</span>
-                </div>
-            </article>
-            <article class="col-12 col-md-6 tm-post">
-                <hr class="tm-hr-primary">
-                <a href="post.html" class="effect-lily tm-post-link tm-pt-20">
-                    <div class="tm-post-link-inner">
-                        <img src="img/img-05.jpg" alt="Image" class="img-fluid">
-                    </div>
-                    <h2 class="tm-pt-30 tm-color-primary tm-post-title">Color hexa values of Xtra Blog</h2>
-                </a>
-                <p class="tm-pt-30">
-                    If you wish to kindly support us, please contact us or contribute a small PayPal amount to info [at]
-                    templatemo.com that is helpful for us.
-                    <br>
-                    Title #099 New #0CC <br>
-                    <span class="tm-color-primary">Text #999 Line #CCC Next #0CC Prev #F0F0F0</span>
-                </p>
-                <div class="d-flex justify-content-between tm-pt-45">
-                    <span class="tm-color-primary">Creative . Video . Audio</span>
-                    <span class="tm-color-primary">May 31, 2020</span>
-                </div>
-                <hr>
-                <div class="d-flex justify-content-between">
-                    <span>84 comments</span>
-                    <span>by Admin Sam</span>
-                </div>
-            </article>
-            <article class="col-12 col-md-6 tm-post">
-                <hr class="tm-hr-primary">
-                <a href="post.html" class="effect-lily tm-post-link tm-pt-20">
-                    <div class="tm-post-link-inner">
-                        <img src="img/img-06.jpg" alt="Image" class="img-fluid">
-                    </div>
-                    <h2 class="tm-pt-30 tm-color-primary tm-post-title">Donec convallis varius risus</h2>
-                </a>
-                <p class="tm-pt-30">
-                    Quisque id ipsum vel sem maximus vulputate sed quis velit. Nunc vel turpis eget orci elementum
-                    cursus vitae in eros. Quisque vulputate nulla ut dolor consectetur luctus.
-                </p>
-                <div class="d-flex justify-content-between tm-pt-45">
-                    <span class="tm-color-primary">Visual . Artworks</span>
-                    <span class="tm-color-primary">June 16, 2020</span>
-                </div>
-                <hr>
-                <div class="d-flex justify-content-between">
-                    <span>96 comments</span>
-                    <span>by Admin Sam</span>
-                </div>
-            </article>
-        </div>
-        <div class="row tm-row tm-mt-100 tm-mb-75">
-            <div class="tm-prev-next-wrapper">
-                <a href="#" class="mb-2 tm-btn tm-btn-primary tm-prev-next disabled tm-mr-20">Prev</a>
-                <a href="#" class="mb-2 tm-btn tm-btn-primary tm-prev-next">Next</a>
-            </div>
-            <div class="tm-paging-wrapper">
-                <span class="d-inline-block mr-3">Page</span>
-                <nav class="tm-paging-nav d-inline-block">
+        <div class="row tm-row tm-mb-40">
+            <div class="col-12">
+                <div class="mb-4">
+                    <h2 class="pt-2 tm-mb-40 tm-color-primary tm-post-title"><?php echo $console["name"]; ?> Game
+                        Console</h2>
+                    <span class="d-block tm-color-primary"><?php echo $console["name"]; ?> Features</span>
+                    <hr/>
+                    <p>
+                        <b>Release
+                            Date:</b> <?php echo DateTime::createFromFormat("Y-m-d H:i:s",
+                            $console["release_date"])->format('F j, Y'); ?> <br/>
+                        <b>Manufacturer:</b> <?php echo $console["manufacturer"]; ?> <br/>
+                        <b>CPU:</b> <?php echo $console["cpu"]; ?> GB<br/>
+                        <b>GPU:</b> <?php echo $console["gpu"]; ?> GB<br/>
+                        <b>RAM:</b> <?php echo $console["ram"]; ?> <br/>
+                        <b>Disc:</b> <?php echo $console["disc"]; ?> <br/>
+                        <b>Display:</b> <?php echo $console["display"]; ?> <br/>
+                        <b>Sound:</b> <?php echo $console["sound"]; ?> <br/>
+                        <b>Media:</b> <?php echo $console["media"]; ?> <br/>
+                        <b>Connectivity:</b> <?php echo $console["connectivity"]; ?> <br/>
+                        <b>Controller Input:</b> <?php echo $console["controller_input"]; ?> <br/>
+                        <b>Dimensions:</b> <?php echo $console["dimensions"]; ?> <br/>
+                        <b>Mass:</b> <?php echo $console["mass"]; ?> <br/>
+                        <b>Price:</b> <?php echo $console["price"]; ?> £<br/>
+                        <b>Website:</b> <a href="https://<?php echo $console['website']; ?>">PlayStation 5
+                            Website</a><br/>
+                        <b>Features:</b> <?php echo $console["features"]; ?> <br/>
+                    </p>
+                    <hr/>
+                    <p>
+                        The PlayStation brand has marked the last 25 years of gaming, and has radically changed from
+                        time to time. All the hours spent playing the game, the joy experienced when winning, the
+                        disappointment experienced when lost have a place that most players will never forget. The new
+                        PlayStation 5, on which Sony has been working for many years, is no longer a secret with the
+                        "Future of Gaming" event held on June 11.
+                    </p>
+                    <p>
+                        In the final stage of Sony's Future of Gaming event on June 11, the long-awaited PlayStation 5
+                        design also appeared. At the event, the design of two different versions of PlayStation 5 was
+                        shown. One of these versions is the console with a disc drive and the other is the digital
+                        version.
+                    </p>
+                    <p>
+                        Sony continues the design line using dual colors, which it started with DualSense in this
+                        generation, with PlayStation 5 itself. Regarding the design of the console, consumers are
+                        divided into two. While one section likes the innovative look of the console, the other section
+                        mocks the design of the console by comparing it to different items such as a modem.
+                    </p>
+                    <p>
+                        Another striking point about the design of PlayStation 5 is that it is the first PlayStation to
+                        be introduced vertically. Although Sony is developing a stand that allows you to use the console
+                        horizontally or vertically, it was a surprise for users that the console was introduced in a
+                        vertical use.
+                    </p>
+
                     <ul>
-                        <li class="tm-paging-item active">
-                            <a href="#" class="mb-2 tm-btn tm-paging-link">1</a>
-                        </li>
-                        <li class="tm-paging-item">
-                            <a href="#" class="mb-2 tm-btn tm-paging-link">2</a>
-                        </li>
-                        <li class="tm-paging-item">
-                            <a href="#" class="mb-2 tm-btn tm-paging-link">3</a>
-                        </li>
-                        <li class="tm-paging-item">
-                            <a href="#" class="mb-2 tm-btn tm-paging-link">4</a>
-                        </li>
+                        <li><p>It will be compatible with older generation games,</p></li>
+                        <li><p>It will take virtual reality one step further,</p></li>
+                        <li><p>It will have ray tracing technology,</p></li>
+                        <li><p>It will have a specially produced sound chip,</p></li>
+                        <li><p>It will have an SSD that will measure the standby screens in milliseconds,</p></li>
+                        <li><p>It will support 8K resolution.</p></li>
                     </ul>
-                </nav>
+
+                    <p>
+                        The fact that PlayStation 5 is compatible with older generation games is a huge plus. In other
+                        words, those who want to sell their Playstation 4 to buy Playstation 5 will not have to wait to
+                        finish their old games. On the virtual reality side, compatibility with the already existing VR
+                        set is maintained. However, it is also among the rumors that a product in the style of wireless
+                        PSVR 2 will be released.
+                    </p>
+
+                    <p>
+                        Mark Cerny, known as the architect of PS5, does not give a secret about VR strategies at this
+                        stage. However, they do not neglect to emphasize that VR technology is very important to them.
+                        Especially as a game that activates VR technology such as Half-Life: Alyx is out, Sony will also
+                        make moves to make the most of the power of VR.
+                    </p>
+
+                    <p>
+                        As a game console, it may not be surprising that it will offer ray tracing support. However, the
+                        fact that ray tracing technology brings visual quality to a whole new level by naturalizing
+                        details such as lighting and reflection in games will be of great importance in terms of the
+                        experience that PlayStation 5 games will offer.
+                    </p>
+
+                    <p>
+                        Another innovation on PlayStation 5 will be the improved sound chip to be used for those who
+                        like to play games with headphones. However, one of the biggest innovations will be the SSD,
+                        which managed to reduce the waiting time on the loading screen by exactly 18 times in the
+                        Marvel's Spider-Man test.
+                    </p>
+                </div>
             </div>
         </div>
-        <footer class="row tm-row">
-            <hr class="col-12">
-            <div class="col-md-6 col-12 tm-color-gray">
-                Design: <a rel="nofollow" target="_parent" href="https://templatemo.com" class="tm-external-link">TemplateMo</a>
+        <div class="row tm-row tm-mb-120">
+            <div class="col-lg-4 tm-about-col">
+                <div class="tm-bg-gray tm-about-pad">
+                    <div class="text-center tm-mt-40 tm-mb-60">
+                        <i class="fas fa-bezier-curve fa-4x tm-color-primary"></i>
+                    </div>
+                    <h2 class="mb-3 tm-color-primary tm-post-title">Efficiency</h2>
+                    <p class="mb-0 tm-line-height-short">
+                        When the Playstation 5 is in standby, it will consume an estimated <b>0.5 watts</b> less than a
+                        Playstation 4 that is also in standby.
+                    </p>
+                </div>
             </div>
-            <div class="col-md-6 col-12 tm-color-gray tm-copyright">
-                Copyright 2020 Xtra Blog Company Co. Ltd.
+            <div class="col-lg-4 tm-about-col">
+                <div class="tm-bg-gray tm-about-pad">
+                    <div class="text-center tm-mt-40 tm-mb-60">
+                        <i class="fas fa-users-cog fa-4x tm-color-primary"></i>
+                    </div>
+                    <h2 class="mb-3 tm-color-primary tm-post-title">Camera</h2>
+                    <p class="mb-0 tm-line-height-short">
+                        In these times when game broadcasting is getting popular day by day, it is now as easy as
+                        computers to broadcast on consoles. At this point, Sony offers a dual-lens camera that can
+                        capture <b>1080p</b> images to make things a little easier.
+                    </p>
+                </div>
             </div>
-        </footer>
+            <div class="col-lg-4 tm-about-col">
+                <div class="tm-bg-gray tm-about-pad">
+                    <div class="text-center tm-mt-40 tm-mb-60">
+                        <i class="fab fa-creative-commons-sampling fa-4x tm-color-primary"></i>
+                    </div>
+                    <h2 class="mb-3 tm-color-primary tm-post-title">Headphone</h2>
+                    <p class="mb-0 tm-line-height-short">
+                        Along with the PlayStation 5, Sony announced a new wireless headset called Pulse 3D. The headset
+                        will have dual microphones with noise canceling and will not lag behind industry standards.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row tm-row tm-mb-60">
+            <div class="col-12">
+                <hr class="tm-hr-primary  tm-mb-55">
+            </div>
+            <div class="col-lg-6 tm-mb-60 tm-person-col">
+                <div class="media tm-person">
+                    <img src="img/mark-cerny.jpg" alt="Image" class="img-fluid mr-4" style="width:140px;">
+                    <div class="media-body">
+                        <h2 class="tm-color-primary tm-post-title mb-2">Mark Cerny</h2>
+                        <h3 class="tm-h3 mb-3">PlayStation 5's chief architect</h3>
+                        <p class="mb-0 tm-line-height-short">
+                            The lead architect of the PlayStation console line, Mark Cerny, implemented a two-year
+                            feedback cycle after the launch of the PlayStation 4.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 tm-mb-60 tm-person-col">
+                <div class="media tm-person">
+                    <img src="img/jim-ryan.jpg" alt="Image" class="img-fluid mr-4" style="width:140px;">
+                    <div class="media-body">
+                        <h2 class="tm-color-primary tm-post-title mb-2">Jim Ryan</h2>
+                        <h3 class="tm-h3 mb-3">CEO of Sony Interactive Entertainment</h3>
+                        <p class="mb-0 tm-line-height-short">
+                            Retro gaming disregarder. Child protector. World's first PlayStation 5 owner.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <?php include("pages/inc/footer.php"); ?>
+
     </main>
 </div>
 <script src="js/jquery.min.js"></script>

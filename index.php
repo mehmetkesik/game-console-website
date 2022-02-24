@@ -26,6 +26,10 @@ if (!empty($_GET['page'])) {
                 header('Location: /');
             }
             break;
+        case 'games':
+            $GLOBALS["active"] = "games";
+            include("pages/games.php");
+            break;
         case 'profile':
             if (!empty($_SESSION["user"])) {
                 $GLOBALS["active"] = "profile";
@@ -33,10 +37,6 @@ if (!empty($_GET['page'])) {
             } else {
                 header('Location: /?page=login');
             }
-            break;
-        case 'about-console':
-            $GLOBALS["active"] = "about-console";
-            include("pages/about-console.php");
             break;
         case 'login':
             include("pages/login.php");

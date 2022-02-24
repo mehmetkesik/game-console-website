@@ -12,42 +12,28 @@
                 <li class="tm-nav-item <?php echo $GLOBALS["active"] == "home" ? "active" : ""; ?>">
                     <a href="/" class="tm-nav-link">
                         <i class="fas fa-home"></i>
-                        Blog Home
+                        Home
                     </a></li>
-                <li class="tm-nav-item <?php echo $GLOBALS["active"] == "post" ? "active" : ""; ?>">
-                    <a href="/?page=post" class="tm-nav-link">
-                        <i class="fas fa-pen"></i>
-                        Single Post
-                    </a></li>
-                <li class="tm-nav-item <?php echo $GLOBALS["active"] == "about" ? "active" : ""; ?>">
-                    <a href="/?page=about" class="tm-nav-link">
+                <li class="tm-nav-item <?php echo $GLOBALS["active"] == "profile" ? "active" : ""; ?>">
+                    <a href="/?page=profile" class="tm-nav-link">
                         <i class="fas fa-users"></i>
-                        About Xtra
+                        Profile
                     </a></li>
-                <li class="tm-nav-item <?php echo $GLOBALS["active"] == "contact" ? "active" : ""; ?>">
+                <li class="tm-nav-item <?php echo $GLOBALS["active"] == "games" ? "active" : ""; ?>">
+                    <a href="/?page=games" class="tm-nav-link">
+                        <i class="fas fa-gamepad"></i>
+                        Games
+                    </a></li>
+                <!--<li class="tm-nav-item <?php /*echo $GLOBALS["active"] == "contact" ? "active" : ""; */?>">
                     <a href="/?page=contact" class="tm-nav-link">
                         <i class="far fa-comments"></i>
                         Contact Us
-                    </a></li>
+                    </a></li>-->
             </ul>
         </nav>
-        <div class="tm-mb-65">
-            <a rel="nofollow" href="https://fb.com/templatemo" class="tm-social-link">
-                <i class="fab fa-facebook tm-social-icon"></i>
-            </a>
-            <a href="https://twitter.com" class="tm-social-link">
-                <i class="fab fa-twitter tm-social-icon"></i>
-            </a>
-            <a href="https://instagram.com" class="tm-social-link">
-                <i class="fab fa-instagram tm-social-icon"></i>
-            </a>
-            <a href="https://linkedin.com" class="tm-social-link">
-                <i class="fab fa-linkedin tm-social-icon"></i>
-            </a>
-        </div>
         <p class="tm-mb-80 pr-5 text-white">
-            Xtra Blog is a multi-purpose HTML template from TemplateMo website. Left side is a sticky menu bar. Right
-            side content will scroll up and down.
+            Get to know the PlayStation 5 game console. Check out their games and leave comments on the games and rate
+            the games. This is your game world..
         </p>
     </div>
 </header>

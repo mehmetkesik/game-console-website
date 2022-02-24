@@ -96,10 +96,11 @@ for ($i = 0; $i < count($comments); $i++) {
                                 <figure class="tm-comment-figure">
                                     <?php
                                     $image = "img/user-icon.png";
-                                    if (file_exists("img/userpics/" . $comment["user"]["username"] . ".png")) {
-                                        $image = "img/userpics/" . $comment["user"]["username"] . ".png";
-                                    } else if (file_exists("img/userpics/" . $comment["user"]["username"] . ".jpeg")) {
-                                        $image = "img/userpics/" . $comment["user"]["username"] . ".jpeg";
+                                    $picsDir = "img/userpics/";
+                                    if (file_exists($picsDir . $comment["user"]["username"] . ".png")) {
+                                        $image = $picsDir . $comment["user"]["username"] . ".png";
+                                    } else if (file_exists($picsDir . $comment["user"]["username"] . ".jpeg")) {
+                                        $image = $picsDir . $comment["user"]["username"] . ".jpeg";
                                     }
                                     ?>
                                     <img src="<?php echo $image; ?>" alt="Image"
