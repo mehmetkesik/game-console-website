@@ -1,0 +1,4 @@
+game -> kullanıcıların oyunları skorlaması ve bu skorunda katkısıyla oyunun skorunun admin skoruyla toplanıp
+hesaplanması yapılacak.bu skor game ve games sayfasında görünecek.
+
+-> header'da arama yeri aktif edilip oyun aranacak.

@@ -130,17 +130,26 @@ function getGame($id)
     return null;
 }
 
-function getGames()
+function getGames($start, $length)
 {
     $db = openDb();
-    $query = $db->query("SELECT * FROM games", PDO::FETCH_ASSOC);
-    $games = [];
-    if ($query->rowCount()) {
-        foreach ($query as $row) {
-            array_push($games, $row);
-        }
+    $query = $db->prepare("SELECT * FROM games ORDER BY id ASC LIMIT :start , :length");
+    $query->bindValue(":start", $start, PDO::PARAM_INT);
+    $query->bindValue(":length", $length, PDO::PARAM_INT);
+    $query->execute();
+    return $query->fetchAll(PDO::FETCH_ASSOC);
+}
+
+function getGamesCount()
+{
+    $db = openDb();
+    $query = $db->prepare("SELECT count(*) FROM games");
+    $query->execute();
+    $result = $query->fetch();
+    if ($result) {
+        return $result[0];
     }
-    return $games;
+    return 0;
 }
 
 function addGame($game)
@@ -176,6 +185,20 @@ function updateGame($game)
         return true;
     }
     return null;
+}
+
+function getGameCommentsCount($gameId)
+{
+    $db = openDb();
+    $query = $db->prepare("SELECT count(*) FROM comments WHERE game_id = :id");
+    $query->bindValue(':id', $gameId);
+    $query->execute();
+    $result = $query->fetch();
+
+    if ($result) {
+        return $result[0];
+    }
+    return 0;
 }
 
 function getComments($gameId)

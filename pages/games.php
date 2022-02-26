@@ -1,6 +1,19 @@
 <?php
 include("db.php");
-$games = getGames();
+
+$s = 1; //page selection
+if (!empty($_GET["s"])) {
+    $gs = $_GET["s"];
+    if (is_numeric($gs) && $gs > 0) {
+        $s = intval($gs);
+    }
+}
+$length = 4;
+$games = getGames(($s - 1) * $length, $length);
+for ($i = 0; $i < count($games); $i++) {
+    $games[$i]["commentsCount"] = getGameCommentsCount($games[$i]["id"]);
+}
+$gamesCount = getGamesCount();
 ?>
 
 <!DOCTYPE html>
@@ -37,7 +50,6 @@ $games = getGames();
                     <div class="d-flex justify-content-between tm-pt-45">
                         <span class="tm-color-primary">
                             <?php
-
                             for ($i = 0; $i < 5; $i++) {
                                 if ($i < $game["admin_score"]) {
                                     echo "<span style='color:#cfb53b;font-size:22px;'>★</span>";
@@ -50,7 +62,7 @@ $games = getGames();
                     </div>
                     <hr>
                     <div class="d-flex justify-content-between">
-                        <span>36 comments</span>
+                        <span><?php echo $game["commentsCount"]; ?> comments</span>
                         <span>by Admin Nat</span>
                     </div>
                 </article>
@@ -58,27 +70,16 @@ $games = getGames();
         </div>
         <div class="row tm-row tm-mt-100 tm-mb-75">
             <div class="tm-prev-next-wrapper">
-                <a href="#" class="mb-2 tm-btn tm-btn-primary tm-prev-next disabled tm-mr-20">Prev</a>
-                <a href="#" class="mb-2 tm-btn tm-btn-primary tm-prev-next">Next</a>
-            </div>
-            <div class="tm-paging-wrapper">
-                <span class="d-inline-block mr-3">Page</span>
-                <nav class="tm-paging-nav d-inline-block">
-                    <ul>
-                        <li class="tm-paging-item active">
-                            <a href="#" class="mb-2 tm-btn tm-paging-link">1</a>
-                        </li>
-                        <li class="tm-paging-item">
-                            <a href="#" class="mb-2 tm-btn tm-paging-link">2</a>
-                        </li>
-                        <li class="tm-paging-item">
-                            <a href="#" class="mb-2 tm-btn tm-paging-link">3</a>
-                        </li>
-                        <li class="tm-paging-item">
-                            <a href="#" class="mb-2 tm-btn tm-paging-link">4</a>
-                        </li>
-                    </ul>
-                </nav>
+                <?php
+                $prev = $s <= 1 ? "#" : "/?page=games&s=" . ($s - 1);
+                $next = ($s * $length) >= $gamesCount ? "#" : "/?page=games&s=" . ($s + 1);
+                ?>
+                <a href="<?php echo $prev; ?>"
+                   class="mb-2 tm-btn tm-btn-primary tm-prev-next tm-mr-20
+                   <?php echo $prev == '#' ? 'disabled' : ''; ?>">Prev</a>
+                <a href="<?php echo $next; ?>"
+                   class="mb-2 tm-btn tm-btn-primary tm-prev-next
+                   <?php echo $next == '#' ? 'disabled' : ''; ?>">Next</a>
             </div>
         </div>
 
