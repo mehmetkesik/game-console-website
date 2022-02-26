@@ -1,23 +1,11 @@
 <?php
 session_start();
 
-$active = "home";
+$active = "";
 
 if (!empty($_GET['page'])) {
     $page = $_GET['page'];
     switch ($page) {
-        case 'post':
-            $GLOBALS['active'] = "post";
-            include("pages/post.php");
-            break;
-        case 'about':
-            $GLOBALS["active"] = "about";
-            include("pages/about.php");
-            break;
-        case 'contact':
-            $GLOBALS["active"] = "contact";
-            include("pages/contact.php");
-            break;
         case 'game':
             if (!empty($_GET['id'])) {
                 $GLOBALS["active"] = "game";

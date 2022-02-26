@@ -75,7 +75,6 @@ for ($i = 0; $i < count($comments); $i++) {
                             <b>GPU:</b> <?php echo $game["gpu_requirement"]; ?> <br/>
                             <b>RAM:</b> <?php echo $game["ram_requirement"]; ?> GB<br/>
                             <b>DISC:</b> <?php echo $game["disc_requirement"]; ?> GB<br/>
-                            <b>Some Features:</b> <?php echo $game["features"]; ?> <br/>
                         </p>
                         <hr/>
 

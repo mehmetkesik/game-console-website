@@ -4,8 +4,7 @@
     Be perfect. Be yourself.
     <br/><br/>
     The rise of our hero, Miles Morales, who gained extraordinary and explosive powers on his way to becoming
-    Spider-Man.
-    experience.
+    Spider-Man experience.
 </p>
 
 <p>
