@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: 127.0.0.1
--- Üretim Zamanı: 25 Şub 2022, 11:51:04
+-- Üretim Zamanı: 26 Şub 2022, 14:43:23
 -- Sunucu sürümü: 10.4.21-MariaDB
 -- PHP Sürümü: 8.0.10
 
@@ -123,7 +123,11 @@ CREATE TABLE `games` (
 
 INSERT INTO `games` (`id`, `console_id`, `name`, `price`, `release_date`, `admin_score`, `picture`, `video`, `cpu_requirement`, `gpu_requirement`, `ram_requirement`, `disc_requirement`, `features`, `time`) VALUES
 (1, 1, 'FIFA 2022', '34', '2021-09-26 00:00:00', 4, 'fifa2022.png', 'https://www.youtube.com/embed/cxXvYJyBlc4', 'Intel Core i3-6100 @ 3.7GHz or AMD Athlon X4 880K @4GHz', 'NVIDIA GTX 660 2GB or AMD Radeon HD 7850 2GB', 8, 50, 'Windows 10 - 64-Bit, Play the World\'s Game with over 17,000 players from around the world, over 700 teams, over 90 stadiums and over 30 leagues.', '2022-02-17 21:55:49'),
-(3, 1, 'Grand Theft Auto V', '5', '2013-09-17 00:00:00', 4, 'gta5.jpg', 'https://www.youtube.com/embed/QkkoHAzjnUs', 'Intel Core 2 Quad CPU Q6600 @ 2.40GHz (4 CPUs) / AMD Phenom 9850 Quad-Core Processor (4 CPUs) @ 2.5G', 'NVIDIA 9800 GT 1GB / AMD HD 4870 1GB (DX 10, 10.1, 11)', 4, 72, 'Windows 10 64 Bit, Windows 8.1 64 Bit, Windows 8 64 Bit, Windows 7 64 Bit Service Pack 1', '2022-02-25 13:36:57');
+(3, 1, 'Grand Theft Auto V', '5', '2013-09-17 00:00:00', 4, 'gta5.jpg', 'https://www.youtube.com/embed/QkkoHAzjnUs', 'Intel Core 2 Quad CPU Q6600 @ 2.40GHz (4 CPUs) / AMD Phenom 9850 Quad-Core Processor (4 CPUs) @ 2.5G', 'NVIDIA 9800 GT 1GB / AMD HD 4870 1GB (DX 10, 10.1, 11)', 4, 72, 'Windows 10 64 Bit, Windows 8.1 64 Bit, Windows 8 64 Bit, Windows 7 64 Bit Service Pack 1', '2022-02-25 13:36:57'),
+(4, 1, 'Far Cry 5', '15', '2018-03-25 00:00:00', 3, 'farcry5.jpeg', 'https://www.youtube.com/embed/wVbwQ_I5QA0', 'Intel Core i5-2400 @ 3.1 GHz or AMD FX-6300 @ 3.5 GHz or equivalent', 'NVIDIA GeForce GTX 670 or AMD R9 270 (2GB VRAM with Shader Model 5.0 or better)', 8, 40, 'Windows 7 SP1, Windows 8.1, Windows 10 (64-bit versions only)', '2022-02-25 23:33:00'),
+(5, 1, 'Gran Turismo 7', '38', '2022-03-04 00:00:00', 4, 'granturismo7.jpeg', 'https://www.youtube.com/embed/1tBUsXIkG1A', 'Intel Core i3-560 3.3GHz / AMD Phenom II X4 805', 'AMD Radeon RX 580 8GB or NVIDIA GeForce GTX 1060', 8, 40, 'Windows® 7,Windows® 10 64-bit', '2022-02-26 16:02:15'),
+(6, 1, 'Spider-Man: Miles Morales', '25', '2020-11-12 00:00:00', 3, 'miles-morales.jpg', 'https://www.youtube.com/embed/rYJ6bg0NCII', 'Intel® Core ™ i3 3250 3.5 GHz or Intel Pentium G4560 3.5 GHz / AMD FX-4350 4.2 GHz', 'NVIDIA® GeForce® GTX 660 2GB or GTX 1050 2GB / AMD Radeon HD 7850 2GB', 6, 105, 'Windows® 7 / Windows® 8.1 / Windows® 10 64-bit (latest Service Pack)', '2022-02-26 16:24:01'),
+(7, 1, 'NBA 2K22', '23', '2021-09-09 00:00:00', 2, 'nba2k22.jpeg', 'https://www.youtube.com/embed/OcUzwnA569M', 'Intel® Core™ i3-2100 @ 3.10 GHz/ AMD FX-4100 @ 3.60 GHz', 'NVIDIA® GeForce® GT 450 1GB/ ATI® Radeon™ HD 7770 1 GB', 4, 110, 'Windows 7 64-bit, Windows 8.1 64-bit or Windows 10 64-bit', '2022-02-26 16:35:49');
 
 -- --------------------------------------------------------
 
@@ -237,7 +241,7 @@ ALTER TABLE `favorite_games`
 -- Tablo için AUTO_INCREMENT değeri `games`
 --
 ALTER TABLE `games`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `scores`
