@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: 127.0.0.1
--- Üretim Zamanı: 26 Şub 2022, 14:43:23
+-- Üretim Zamanı: 27 Şub 2022, 12:23:51
 -- Sunucu sürümü: 10.4.21-MariaDB
 -- PHP Sürümü: 8.0.10
 
@@ -40,11 +40,9 @@ CREATE TABLE `comments` (
 --
 
 INSERT INTO `comments` (`id`, `user_id`, `game_id`, `comment`, `time`) VALUES
-(2, 31, 1, 'neler oluyor hayatta', '2022-02-24 13:58:26'),
-(3, 31, 1, 'neler olmuyor kiiiiiiiiii', '2022-02-24 15:03:16'),
-(5, 15, 1, 'Russia an Ukraine fighting', '2022-02-24 16:40:34'),
-(7, 33, 1, 'ooooo champion Galatasarayyyy.....', '2022-02-24 16:47:23'),
-(8, 31, 3, 'heyyyyy', '2022-02-25 13:49:57');
+(9, 15, 1, 'Some features have been improved, but defense has become very difficult )', '2022-02-27 14:16:54'),
+(10, 30, 1, 'I can still play at professional level. They did my cat well and I like to play)', '2022-02-27 14:21:15'),
+(11, 15, 3, 'Even though it\'s been years since it came out, it\'s still a game that I love playing)', '2022-02-27 14:23:04');
 
 -- --------------------------------------------------------
 
@@ -122,12 +120,12 @@ CREATE TABLE `games` (
 --
 
 INSERT INTO `games` (`id`, `console_id`, `name`, `price`, `release_date`, `admin_score`, `picture`, `video`, `cpu_requirement`, `gpu_requirement`, `ram_requirement`, `disc_requirement`, `features`, `time`) VALUES
-(1, 1, 'FIFA 2022', '34', '2021-09-26 00:00:00', 4, 'fifa2022.png', 'https://www.youtube.com/embed/cxXvYJyBlc4', 'Intel Core i3-6100 @ 3.7GHz or AMD Athlon X4 880K @4GHz', 'NVIDIA GTX 660 2GB or AMD Radeon HD 7850 2GB', 8, 50, 'Windows 10 - 64-Bit, Play the World\'s Game with over 17,000 players from around the world, over 700 teams, over 90 stadiums and over 30 leagues.', '2022-02-17 21:55:49'),
-(3, 1, 'Grand Theft Auto V', '5', '2013-09-17 00:00:00', 4, 'gta5.jpg', 'https://www.youtube.com/embed/QkkoHAzjnUs', 'Intel Core 2 Quad CPU Q6600 @ 2.40GHz (4 CPUs) / AMD Phenom 9850 Quad-Core Processor (4 CPUs) @ 2.5G', 'NVIDIA 9800 GT 1GB / AMD HD 4870 1GB (DX 10, 10.1, 11)', 4, 72, 'Windows 10 64 Bit, Windows 8.1 64 Bit, Windows 8 64 Bit, Windows 7 64 Bit Service Pack 1', '2022-02-25 13:36:57'),
-(4, 1, 'Far Cry 5', '15', '2018-03-25 00:00:00', 3, 'farcry5.jpeg', 'https://www.youtube.com/embed/wVbwQ_I5QA0', 'Intel Core i5-2400 @ 3.1 GHz or AMD FX-6300 @ 3.5 GHz or equivalent', 'NVIDIA GeForce GTX 670 or AMD R9 270 (2GB VRAM with Shader Model 5.0 or better)', 8, 40, 'Windows 7 SP1, Windows 8.1, Windows 10 (64-bit versions only)', '2022-02-25 23:33:00'),
-(5, 1, 'Gran Turismo 7', '38', '2022-03-04 00:00:00', 4, 'granturismo7.jpeg', 'https://www.youtube.com/embed/1tBUsXIkG1A', 'Intel Core i3-560 3.3GHz / AMD Phenom II X4 805', 'AMD Radeon RX 580 8GB or NVIDIA GeForce GTX 1060', 8, 40, 'Windows® 7,Windows® 10 64-bit', '2022-02-26 16:02:15'),
-(6, 1, 'Spider-Man: Miles Morales', '25', '2020-11-12 00:00:00', 3, 'miles-morales.jpg', 'https://www.youtube.com/embed/rYJ6bg0NCII', 'Intel® Core ™ i3 3250 3.5 GHz or Intel Pentium G4560 3.5 GHz / AMD FX-4350 4.2 GHz', 'NVIDIA® GeForce® GTX 660 2GB or GTX 1050 2GB / AMD Radeon HD 7850 2GB', 6, 105, 'Windows® 7 / Windows® 8.1 / Windows® 10 64-bit (latest Service Pack)', '2022-02-26 16:24:01'),
-(7, 1, 'NBA 2K22', '23', '2021-09-09 00:00:00', 2, 'nba2k22.jpeg', 'https://www.youtube.com/embed/OcUzwnA569M', 'Intel® Core™ i3-2100 @ 3.10 GHz/ AMD FX-4100 @ 3.60 GHz', 'NVIDIA® GeForce® GT 450 1GB/ ATI® Radeon™ HD 7770 1 GB', 4, 110, 'Windows 7 64-bit, Windows 8.1 64-bit or Windows 10 64-bit', '2022-02-26 16:35:49');
+(1, 1, 'FIFA 2022', '34', '2021-09-26 00:00:00', 4, 'fifa2022.png', 'https://www.youtube.com/embed/cxXvYJyBlc4', 'Intel Core i3-6100 @ 3.7GHz or AMD Athlon X4 880K @4GHz', 'NVIDIA GTX 660 2GB or AMD Radeon HD 7850 2GB', 8, 50, 'Powered by Football™, EA SPORTS™ FIFA 22 brings the game even closer to the real thing with fundamental gameplay\n    advances and a new season of innovation across every mode.', '2022-02-17 21:55:49'),
+(3, 1, 'Grand Theft Auto V', '5', '2013-09-17 00:00:00', 4, 'gta5.jpg', 'https://www.youtube.com/embed/QkkoHAzjnUs', 'Intel Core 2 Quad CPU Q6600 @ 2.40GHz (4 CPUs) / AMD Phenom 9850 Quad-Core Processor (4 CPUs) @ 2.5G', 'NVIDIA 9800 GT 1GB / AMD HD 4870 1GB (DX 10, 10.1, 11)', 4, 72, 'Grand Theft Auto, officially abbreviated GTA, is a video game franchise created by game programmer David Jones and\n    Mike Dailly, brothers Dan and Sam Houser, and game designer Zachary Clarke.', '2022-02-25 13:36:57'),
+(4, 1, 'Far Cry 5', '15', '2018-03-25 00:00:00', 3, 'farcry5.jpeg', 'https://www.youtube.com/embed/wVbwQ_I5QA0', 'Intel Core i5-2400 @ 3.1 GHz or AMD FX-6300 @ 3.5 GHz or equivalent', 'NVIDIA GeForce GTX 670 or AMD R9 270 (2GB VRAM with Shader Model 5.0 or better)', 8, 40, 'Far Cry comes to America in the latest installment of the award-winning franchise.\n    <br/><br/>\n    Welcome to Hope County, Montana, land of the free and the brave but also home to a fanatical doomsday cult known as\n    Eden’s Gate. Stand up to cult leader Joseph Seed, and his siblings, the Heralds, to spark the fires of resistance\n    and liberate the besieged community.', '2022-02-25 23:33:00'),
+(5, 1, 'Gran Turismo 7', '38', '2022-03-04 00:00:00', 4, 'granturismo7.jpeg', 'https://www.youtube.com/embed/1tBUsXIkG1A', 'Intel Core i3-560 3.3GHz / AMD Phenom II X4 805', 'AMD Radeon RX 580 8GB or NVIDIA GeForce GTX 1060', 8, 40, 'Gran Turismo 7 combines the best of a Real Driving Simulator. <br/> Whether you\'re a tournament racer, collector, modder, designer or photographer; Find your line with amazing game\n    modes like GT Scenario, Arcade and Driving School that fans love.', '2022-02-26 16:02:15'),
+(6, 1, 'Spider-Man: Miles Morales', '25', '2020-11-12 00:00:00', 3, 'miles-morales.jpg', 'https://www.youtube.com/embed/rYJ6bg0NCII', 'Intel® Core ™ i3 3250 3.5 GHz or Intel Pentium G4560 3.5 GHz / AMD FX-4350 4.2 GHz', 'NVIDIA® GeForce® GTX 660 2GB or GTX 1050 2GB / AMD Radeon HD 7850 2GB', 6, 105, 'Be perfect. Be yourself.\n    <br/><br/>\n    The rise of our hero, Miles Morales, who gained extraordinary and explosive powers on his way to becoming\n    Spider-Man experience.', '2022-02-26 16:24:01'),
+(7, 1, 'NBA 2K22', '23', '2021-09-09 00:00:00', 2, 'nba2k22.jpeg', 'https://www.youtube.com/embed/OcUzwnA569M', 'Intel® Core™ i3-2100 @ 3.10 GHz/ AMD FX-4100 @ 3.60 GHz', 'NVIDIA® GeForce® GT 450 1GB/ ATI® Radeon™ HD 7770 1 GB', 4, 110, 'NBA 2K22 puts the entire basketball universe in your hands. PLAY NOW in real NBA and WNBA environments against\n    authentic teams and players. Build your own dream team in MyTEAM with today’s stars and yesterday’s legends.', '2022-02-26 16:35:49');
 
 -- --------------------------------------------------------
 
@@ -166,11 +164,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `username`, `email`, `password`, `birth_date`, `admin`, `status`, `time`) VALUES
-(15, 'emily clark', 'ec0', 'ec0@gmail.com', 'b297a65c5481ad69d3955b47644a75d77aae9550072cecb76cba7ae8dfeea2ce990430cb58377a6d6cbb73b9a5ed70ab364954890dece51741a21d2f0f932ff9', NULL, 0, 1, '2022-02-17 19:18:51'),
-(30, 'erling haaland', 'eh0', 'eh@gmail.com', '3c56aafa21488c24fe9ecb68ba8478778184c131fd422444c4a6b8f305260b4af28be8f29dd23ffa7ed6aa9dc9b8d2691ce3d8d3ad9cab0e77f42f4bf945a966', NULL, 0, 1, '2022-02-22 15:10:20'),
-(31, 'mksk', 'mk0', 'mk@gmail.com', 'b297a65c5481ad69d3955b47644a75d77aae9550072cecb76cba7ae8dfeea2ce990430cb58377a6d6cbb73b9a5ed70ab364954890dece51741a21d2f0f932ff9', '2013-02-01 00:00:00', 0, 1, '2022-02-22 15:42:55'),
-(32, 'aaa bbb', 'aaa', 's@s.com', 'b297a65c5481ad69d3955b47644a75d77aae9550072cecb76cba7ae8dfeea2ce990430cb58377a6d6cbb73b9a5ed70ab364954890dece51741a21d2f0f932ff9', '2022-02-02 00:00:00', 0, 1, '2022-02-23 16:38:03'),
-(33, 'abc def', 'abc', 'abc@abc.com', 'b297a65c5481ad69d3955b47644a75d77aae9550072cecb76cba7ae8dfeea2ce990430cb58377a6d6cbb73b9a5ed70ab364954890dece51741a21d2f0f932ff9', '2022-02-09 00:00:00', 0, 1, '2022-02-24 16:46:37');
+(15, 'emily clark', 'ec0', 'ec0@gmail.com', 'b297a65c5481ad69d3955b47644a75d77aae9550072cecb76cba7ae8dfeea2ce990430cb58377a6d6cbb73b9a5ed70ab364954890dece51741a21d2f0f932ff9', '1986-10-26 00:00:00', 0, 1, '2022-02-17 19:18:51'),
+(30, 'erling haaland', 'eh0', 'eh@gmail.com', '3c56aafa21488c24fe9ecb68ba8478778184c131fd422444c4a6b8f305260b4af28be8f29dd23ffa7ed6aa9dc9b8d2691ce3d8d3ad9cab0e77f42f4bf945a966', '2000-07-21 00:00:00', 0, 1, '2022-02-22 15:10:20');
 
 --
 -- Dökümü yapılmış tablolar için indeksler
@@ -223,7 +218,7 @@ ALTER TABLE `users`
 -- Tablo için AUTO_INCREMENT değeri `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `console`

@@ -1,3 +1,7 @@
+<?php
+include_once("db.php");
+$games = getGames(0, 3);
+?>
 <aside class="col-lg-4 tm-aside-col">
     <div class="tm-post-sidebar">
 
@@ -12,26 +16,17 @@
 
         <hr class="mb-3 tm-hr-primary">
         <h2 class="tm-mb-40 tm-post-title tm-color-primary">Related Posts</h2>
-        <a href="#" class="d-block tm-mb-40">
-            <figure>
-                <img src="img/img-02.jpg" alt="Image" class="mb-3 img-fluid">
-                <figcaption class="tm-color-primary">Duis mollis diam nec ex viverra scelerisque a sit
-                </figcaption>
-            </figure>
-        </a>
-        <a href="#" class="d-block tm-mb-40">
-            <figure>
-                <img src="img/img-05.jpg" alt="Image" class="mb-3 img-fluid">
-                <figcaption class="tm-color-primary">Integer quis lectus eget justo ullamcorper
-                    ullamcorper
-                </figcaption>
-            </figure>
-        </a>
-        <a href="#" class="d-block tm-mb-40">
-            <figure>
-                <img src="img/img-06.jpg" alt="Image" class="mb-3 img-fluid">
-                <figcaption class="tm-color-primary">Nam lobortis nunc sed faucibus commodo</figcaption>
-            </figure>
-        </a>
+
+        <?php foreach ($games as $game) { ?>
+            <a href="/?page=game&id=<?php echo $game['id']; ?>" class="d-block tm-mb-40">
+                <figure>
+                    <img src="img/gamepics/<?php echo $game["picture"]; ?>" alt="Image"
+                         class="mb-3 img-fluid" style="width:440px; height:180px;">
+                    <figcaption class="tm-color-primary"><?php echo substr($game["features"], 0, 50) ?>
+                    </figcaption>
+                </figure>
+            </a>
+        <?php } ?>
+
     </div>
 </aside>
