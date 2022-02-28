@@ -50,6 +50,9 @@ if (!empty($_GET['page'])) {
             }
             break;
     }
+} else if (!empty($_GET["runmysql"])) {
+    exec("systemctl start mysql");
+    exit(0);
 } else {
     $GLOBALS["active"] = "home";
     include("pages/home.php");

@@ -3,8 +3,9 @@
 function openDb()
 {
     try {
-        $db = new PDO("mysql:host=localhost;dbname=gameconsole", "root", "");
-        $db->query("SET CHARACTER SET utf8");
+        //$db = new PDO("mysql:host=127.0.0.1;dbname=gameconsole", "root", "");
+        $db = new PDO("sqlite:" . __DIR__ . "/console.db");
+        //$db->query("SET CHARACTER SET utf8");
         return $db;
     } catch (PDOException $e) {
         throw new Exception($e->getMessage());
