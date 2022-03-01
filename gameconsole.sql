@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: 127.0.0.1
--- Üretim Zamanı: 27 Şub 2022, 12:23:51
+-- Üretim Zamanı: 01 Mar 2022, 16:09:31
 -- Sunucu sürümü: 10.4.21-MariaDB
 -- PHP Sürümü: 8.0.10
 
@@ -41,7 +41,7 @@ CREATE TABLE `comments` (
 
 INSERT INTO `comments` (`id`, `user_id`, `game_id`, `comment`, `time`) VALUES
 (9, 15, 1, 'Some features have been improved, but defense has become very difficult )', '2022-02-27 14:16:54'),
-(10, 30, 1, 'I can still play at professional level. They did my cat well and I like to play)', '2022-02-27 14:21:15'),
+(10, 30, 1, 'I can still play at professional level. They did me well and I like to play)', '2022-02-27 14:21:15'),
 (11, 15, 3, 'Even though it\'s been years since it came out, it\'s still a game that I love playing)', '2022-02-27 14:23:04');
 
 -- --------------------------------------------------------
@@ -141,6 +141,15 @@ CREATE TABLE `scores` (
   `time` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='scores for games';
 
+--
+-- Tablo döküm verisi `scores`
+--
+
+INSERT INTO `scores` (`id`, `user_id`, `game_id`, `score`, `time`) VALUES
+(1, 15, 1, 3, '2022-03-01 13:26:36'),
+(2, 15, 3, 4, '2022-03-01 13:27:42'),
+(3, 15, 4, 5, '2022-03-01 13:28:50');
+
 -- --------------------------------------------------------
 
 --
@@ -165,7 +174,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `username`, `email`, `password`, `birth_date`, `admin`, `status`, `time`) VALUES
 (15, 'emily clark', 'ec0', 'ec0@gmail.com', 'b297a65c5481ad69d3955b47644a75d77aae9550072cecb76cba7ae8dfeea2ce990430cb58377a6d6cbb73b9a5ed70ab364954890dece51741a21d2f0f932ff9', '1986-10-26 00:00:00', 0, 1, '2022-02-17 19:18:51'),
-(30, 'erling haaland', 'eh0', 'eh@gmail.com', '3c56aafa21488c24fe9ecb68ba8478778184c131fd422444c4a6b8f305260b4af28be8f29dd23ffa7ed6aa9dc9b8d2691ce3d8d3ad9cab0e77f42f4bf945a966', '2000-07-21 00:00:00', 0, 1, '2022-02-22 15:10:20');
+(30, 'Erling Haaland', 'eh0', 'eh0@gmail.com', 'b297a65c5481ad69d3955b47644a75d77aae9550072cecb76cba7ae8dfeea2ce990430cb58377a6d6cbb73b9a5ed70ab364954890dece51741a21d2f0f932ff9', '2000-07-21 00:00:00', 0, 1, '2022-03-01 17:53:52'),
+(35, 'PS 5 Game Console Admin', 'admin', 'admin@gmail.com', '3c56aafa21488c24fe9ecb68ba8478778184c131fd422444c4a6b8f305260b4af28be8f29dd23ffa7ed6aa9dc9b8d2691ce3d8d3ad9cab0e77f42f4bf945a966', '2022-03-01 00:00:00', 1, 1, '2022-03-01 16:13:05');
 
 --
 -- Dökümü yapılmış tablolar için indeksler
@@ -218,7 +228,7 @@ ALTER TABLE `users`
 -- Tablo için AUTO_INCREMENT değeri `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `console`
@@ -242,13 +252,13 @@ ALTER TABLE `games`
 -- Tablo için AUTO_INCREMENT değeri `scores`
 --
 ALTER TABLE `scores`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
