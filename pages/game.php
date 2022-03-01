@@ -8,10 +8,17 @@ if (!$game) {
 }
 
 if (!empty($_POST) && !empty($_SESSION["user"])) {
-    $user = $_SESSION["user"];
-    $comment = $_POST["comment"];
     $gameId = $game["id"];
-    addComment($user["id"], $gameId, $comment);
+    if (!empty($_GET["action"])) {
+        //adding game score
+        addGameScoreByUser($_SESSION["user"]["id"], $gameId, $_POST["score"]);
+    } else {
+        //adding game comment
+        $user = $_SESSION["user"];
+        $comment = $_POST["comment"];
+        addComment($user["id"], $gameId, $comment);
+    }
+
     header("Location: /?page=game&id=$gameId");
     exit(0);
 }
@@ -21,6 +28,19 @@ $comments = getComments($game["id"]);
 for ($i = 0; $i < count($comments); $i++) {
     $comments[$i]["user"] = getUserById($comments[$i]["user_id"]);
 }
+
+$score = null;
+if (!empty($_SESSION["user"])) {
+    $user = $_SESSION["user"];
+    $score = getGameScoreByUser($user["id"], $game["id"]);
+}
+
+$gameTotalScore = $game["admin_score"];
+$gameScores = getGameScores($game["id"]);
+foreach ($gameScores as $gameScore) {
+    $gameTotalScore += $gameScore["score"];
+}
+$gameTotalScore /= count($gameScores) + 1;
 
 ?>
 
@@ -59,7 +79,7 @@ for ($i = 0; $i < count($comments); $i++) {
                             Score: <?php
 
                             for ($i = 0; $i < 5; $i++) {
-                                if ($i < $game["admin_score"]) {
+                                if ($i < $gameTotalScore/*$game["admin_score"]*/) {
                                     echo "<span style='color:#cfb53b;font-size:22px;'>★</span>";
                                 } else {
                                     echo "<span style='font-size:22px;'>★</span>";
@@ -81,8 +101,35 @@ for ($i = 0; $i < count($comments); $i++) {
                         <?php $gn = slugify($game['name']);
                         include("pages/games/$gn.php"); ?>
 
-                        <span class="d-block text-right tm-color-primary">
+                        <div class="d-flex justify-content-between">
+                            <span class='d-block text-left tm-color-primary'>
+                            <?php if (!empty($user)) {
+                                if ($score) {
+                                    for ($i = 0; $i < $score; $i++) echo "★ ";
+                                    echo ". Your Score";
+                                } else {
+                                    ?>
+                                    <form method="post" action="/?page=game&id=<?php echo $game['id']; ?>&action=score">
+                                    <label for="score">Score:</label>
+                                    <select name='score' id='score' class="tm-btn tm-btn-primary tm-btn-small"
+                                            style="padding:4px 8px;">
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option selected>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                      </select>
+                                    <button class="tm-btn tm-btn-primary tm-btn-small ml-3"
+                                            style="padding:0 8px;">Send</button>
+                                    </form>
+                                    <?php
+                                }
+                            } ?>
+                            </span>
+                            <span class="d-block text-right tm-color-primary">
                             <?php for ($i = 0; $i < $game['admin_score']; $i++) echo "★ "; ?> . Scored By Admin</span>
+                        </div>
+
                     </div>
 
                     <!-- Comments -->

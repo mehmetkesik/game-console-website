@@ -3,8 +3,8 @@
 function openDb()
 {
     try {
-        //$db = new PDO("mysql:host=127.0.0.1;dbname=gameconsole", "root", "");
-        $db = new PDO("sqlite:" . __DIR__ . "/console.db");
+        $db = new PDO("mysql:host=127.0.0.1;dbname=gameconsole", "root", "");
+        //$db = new PDO("sqlite:" . __DIR__ . "/console.db");
         //$db->query("SET CHARACTER SET utf8");
         return $db;
     } catch (PDOException $e) {
@@ -200,6 +200,43 @@ function getGameCommentsCount($gameId)
         return $result[0];
     }
     return 0;
+}
+
+function getGameScoreByUser($userId, $gameId)
+{
+    $db = openDb();
+    $query = $db->prepare("SELECT score FROM scores WHERE user_id = :userid and game_id = :gameid");
+    $query->bindValue(':userid', $userId);
+    $query->bindValue(':gameid', $gameId);
+    $query->execute();
+    $result = $query->fetch();
+
+    if ($result) {
+        return $result[0];
+    }
+    return 0;
+}
+
+function addGameScoreByUser($userId, $gameId, $score)
+{
+    $db = openDb();
+    $query = $db->prepare("INSERT INTO scores SET user_id = ?, game_id = ?, score = ?");
+    $insert = $query->execute(array($userId, $gameId, $score));
+    if ($insert) {
+        $last_id = $db->lastInsertId();
+        return $last_id;
+    }
+    return null;
+}
+
+function getGameScores($gameId)
+{
+    $db = openDb();
+    $query = $db->prepare("SELECT score FROM scores WHERE game_id = :gameid");
+    $query->bindValue(':gameid', $gameId);
+    $query->execute();
+
+    return $query->fetchAll(PDO::FETCH_ASSOC);
 }
 
 function getComments($gameId)
