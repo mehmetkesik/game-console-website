@@ -6,6 +6,13 @@ $active = "";
 if (!empty($_GET['page'])) {
     $page = $_GET['page'];
     switch ($page) {
+        case 'admin':
+            if (!empty($_SESSION["user"]) && $_SESSION["user"]["admin"] == 1) {
+                include("pages/admin.php");
+            } else {
+                header('Location: /?page=login');
+            }
+            break;
         case 'game':
             if (!empty($_GET['id'])) {
                 $GLOBALS["active"] = "game";

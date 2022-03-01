@@ -73,6 +73,16 @@ function getUserByEmail($email)
     return null;
 }
 
+function getUsersBySearch($search)
+{
+    $search = "%" . $search . "%";
+    $db = openDb();
+    $query = $db->prepare("SELECT * FROM users WHERE admin != 1 and username LIKE :search ORDER BY id DESC LIMIT 5");
+    $query->bindValue(":search", $search);
+    $query->execute();
+    return $query->fetchAll(PDO::FETCH_ASSOC);
+}
+
 function addUser($user)
 {
     try {
@@ -111,6 +121,17 @@ function updateUserPassword($password, $userId)
     $db = openDb();
     $query = $db->prepare("UPDATE users SET password = ? WHERE id = ?");
     $update = $query->execute(array($password, $userId));
+    if ($update) {
+        return true;
+    }
+    return null;
+}
+
+function deleteUserById($id)
+{
+    $db = openDb();
+    $query = $db->prepare("DELETE FROM users WHERE id = ?");
+    $update = $query->execute(array($id));
     if ($update) {
         return true;
     }
