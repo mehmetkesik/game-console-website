@@ -8,6 +8,12 @@ if (!empty($_GET["s"])) {
         $s = intval($gs);
     }
 }
+
+//game search
+if (!empty($_GET["search"])) {
+    $search = $_GET["search"];
+}
+
 $length = 4;
 $games = getGames(($s - 1) * $length, $length);
 for ($i = 0; $i < count($games); $i++) {
