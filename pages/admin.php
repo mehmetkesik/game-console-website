@@ -83,7 +83,7 @@ if (!empty($_GET["search"])) {
                                 Name: <b><?php echo $user["name"]; ?></b>
                             </p>
                             <p style="word-wrap: break-word;">
-                                Name: <b><?php echo prettyDate($user["birth_date"]); ?></b>
+                                Birth Date: <b><?php echo prettyDate($user["birth_date"]); ?></b>
                             </p>
                             <div class="d-flex justify-content-between">
                                 <button style="color:#871C2B;border:1px #B9B6B6 solid;border-radius: 5px;padding:3px;"
@@ -93,18 +93,19 @@ if (!empty($_GET["search"])) {
                                 <span class="tm-color-primary text-right">
                                             <?php echo prettyDate($user["time"]); ?>
                                         </span>
-                                <script type="text/javascript">
-                                    function deleteUser(id) {
-                                        if (confirm('Are you sure you want to delete this user?')) {
-                                            console.log("okay " + id);
-                                            window.location.href = "/?page=admin&id=" + id;
-                                        }
-                                    }
-                                </script>
                             </div>
                         </div>
                     </div>
                 <?php } ?>
+
+                <script type="text/javascript">
+                    function deleteUser(id) {
+                        if (confirm('Are you sure you want to delete this user?')) {
+                            console.log("okay " + id);
+                            window.location.href = "/?page=admin&id=" + id;
+                        }
+                    }
+                </script>
 
             </div>
         </div>

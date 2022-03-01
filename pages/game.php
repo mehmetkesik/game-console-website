@@ -30,8 +30,10 @@ for ($i = 0; $i < count($comments); $i++) {
 }
 
 $score = null;
+$isAdmin = false;
 if (!empty($_SESSION["user"])) {
     $user = $_SESSION["user"];
+    $isAdmin = $user["admin"];
     $score = getGameScoreByUser($user["id"], $game["id"]);
 }
 
@@ -161,7 +163,17 @@ $gameTotalScore /= count($gameScores) + 1;
                                         <?php echo $comment["comment"]; ?>
                                     </p>
                                     <div class="d-flex justify-content-between">
-                                        <a href="#" class="tm-color-primary"></a>
+
+                                        <?php if ($isAdmin) { ?>
+                                            <button style="color:#871C2B;border:1px #B9B6B6 solid;
+                                        border-radius: 5px;font-size:15px;"
+                                                    onclick="deleteUser(<?php echo $user["id"]; ?>)">
+                                                Delete comment
+                                            </button>
+                                        <?php } else { ?>
+                                            <a href="#"></a>
+                                        <?php } ?>
+
                                         <span class="tm-color-primary text-right">
                                             <?php echo prettyDate($comment["time"]); ?>
                                         </span>
