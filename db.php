@@ -141,6 +141,17 @@ function getGames($start, $length)
     return $query->fetchAll(PDO::FETCH_ASSOC);
 }
 
+function getGamesBySearch($length, $search)
+{
+    $search = "%" . $search . "%";
+    $db = openDb();
+    $query = $db->prepare("SELECT * FROM games WHERE name LIKE :search ORDER BY id ASC LIMIT :length");
+    $query->bindValue(":search", $search);
+    $query->bindValue(":length", $length, PDO::PARAM_INT);
+    $query->execute();
+    return $query->fetchAll(PDO::FETCH_ASSOC);
+}
+
 function getGamesCount()
 {
     $db = openDb();

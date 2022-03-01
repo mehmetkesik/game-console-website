@@ -4,7 +4,7 @@
         <form method="GET" class="form-inline tm-mb-80 tm-search-form">
             <input name="page" value="games" style="display: none;"/>
             <input class="form-control tm-search-input" name="search" type="text" placeholder="Search..."
-                   aria-label="Search">
+                   aria-label="Search" required>
             <button class="tm-search-button" type="submit">
                 <i class="fas fa-search tm-search-icon" aria-hidden="true"></i>
             </button>

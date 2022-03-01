@@ -9,13 +9,16 @@ if (!empty($_GET["s"])) {
     }
 }
 
-//game search
-if (!empty($_GET["search"])) {
-    $search = $_GET["search"];
+$games = [];
+$length = 4;
+$isSearching = false;
+if (!empty($_GET["search"])) {//game search
+    $isSearching = true;
+    $games = getGamesBySearch($length, $_GET["search"]);
+} else {//games
+    $games = getGames(($s - 1) * $length, $length);
 }
 
-$length = 4;
-$games = getGames(($s - 1) * $length, $length);
 for ($i = 0; $i < count($games); $i++) {
     $games[$i]["commentsCount"] = getGameCommentsCount($games[$i]["id"]);
 }
@@ -74,21 +77,22 @@ $gamesCount = getGamesCount();
                 </article>
             <?php } ?>
         </div>
-        <div class="row tm-row tm-mt-100 tm-mb-75">
-            <div class="tm-prev-next-wrapper">
-                <?php
-                $prev = $s <= 1 ? "#" : "/?page=games&s=" . ($s - 1);
-                $next = ($s * $length) >= $gamesCount ? "#" : "/?page=games&s=" . ($s + 1);
-                ?>
-                <a href="<?php echo $prev; ?>"
-                   class="mb-2 tm-btn tm-btn-primary tm-prev-next tm-mr-20
+        <?php if (!$isSearching) { ?>
+            <div class="row tm-row tm-mt-100 tm-mb-75">
+                <div class="tm-prev-next-wrapper">
+                    <?php
+                    $prev = $s <= 1 ? "#" : "/?page=games&s=" . ($s - 1);
+                    $next = ($s * $length) >= $gamesCount ? "#" : "/?page=games&s=" . ($s + 1);
+                    ?>
+                    <a href="<?php echo $prev; ?>"
+                       class="mb-2 tm-btn tm-btn-primary tm-prev-next tm-mr-20
                    <?php echo $prev == '#' ? 'disabled' : ''; ?>">Prev</a>
-                <a href="<?php echo $next; ?>"
-                   class="mb-2 tm-btn tm-btn-primary tm-prev-next
+                    <a href="<?php echo $next; ?>"
+                       class="mb-2 tm-btn tm-btn-primary tm-prev-next
                    <?php echo $next == '#' ? 'disabled' : ''; ?>">Next</a>
+                </div>
             </div>
-        </div>
-
+        <?php } ?>
         <?php include("pages/inc/footer.php"); ?>
 
     </main>
