@@ -2,7 +2,13 @@
 include("db.php");
 
 if (!empty($_GET["id"])) {
+    $user = getUserById($_GET["id"]);
+
     deleteUserById($_GET["id"]);
+    deleteUserComments($_GET["id"]);
+
+    @unlink("img/userpics/" . $user["username"] . ".png");
+    @unlink("img/userpics/" . $user["username"] . ".jpeg");
 
     header("Location: /?page=admin");
     exit(0);

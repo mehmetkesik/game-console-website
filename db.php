@@ -131,8 +131,8 @@ function deleteUserById($id)
 {
     $db = openDb();
     $query = $db->prepare("DELETE FROM users WHERE id = ?");
-    $update = $query->execute(array($id));
-    if ($update) {
+    $delete = $query->execute(array($id));
+    if ($delete) {
         return true;
     }
     return null;
@@ -300,6 +300,16 @@ function addComment($userId, $gameId, $comment)
     return null;
 }
 
+function deleteUserComments($userId)
+{
+    $db = openDb();
+    $query = $db->prepare("DELETE FROM comments WHERE user_id = ?");
+    $delete = $query->execute(array($userId));
+    if ($delete) {
+        return true;
+    }
+    return null;
+}
 
 //helper
 function slugify($text)
