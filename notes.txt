@@ -1,1 +1,1 @@
-comments -> yorumların silinmesi yapılacak. buton koyuldu.
+comments -> yorumların silinmesi yapılacak. delete işlemi game.php de yapıldı ve denenecek.

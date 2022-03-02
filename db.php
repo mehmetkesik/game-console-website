@@ -300,6 +300,17 @@ function addComment($userId, $gameId, $comment)
     return null;
 }
 
+function deleteUserComment($id)
+{
+    $db = openDb();
+    $query = $db->prepare("DELETE FROM comments WHERE id = ?");
+    $delete = $query->execute(array($id));
+    if ($delete) {
+        return true;
+    }
+    return null;
+}
+
 function deleteUserComments($userId)
 {
     $db = openDb();

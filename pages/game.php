@@ -9,9 +9,12 @@ if (!$game) {
 
 if (!empty($_POST) && !empty($_SESSION["user"])) {
     $gameId = $game["id"];
-    if (!empty($_GET["action"])) {
+    if (!empty($_GET["action"]) && $_GET["action"] == "score") {
         //adding game score
         addGameScoreByUser($_SESSION["user"]["id"], $gameId, $_POST["score"]);
+    } else if ($_SESSION["user"]["admin"] && !empty($_GET["action"]) && $_GET["action"] == "deletecomment") {
+        //deleting comment by admin
+        deleteUserComment($_POST["commentid"]);
     } else {
         //adding game comment
         $user = $_SESSION["user"];
@@ -111,7 +114,8 @@ $gameTotalScore /= count($gameScores) + 1;
                                     echo ". Your Score";
                                 } else {
                                     ?>
-                                    <form method="post" action="/?page=game&id=<?php echo $game['id']; ?>&action=score">
+                                    <form method="post"
+                                          action="/?page=game&id=<?php echo $game['id']; ?>&action=score">
                                     <label for="score">Score:</label>
                                     <select name='score' id='score' class="tm-btn tm-btn-primary tm-btn-small"
                                             style="padding:4px 8px;">
@@ -165,11 +169,16 @@ $gameTotalScore /= count($gameScores) + 1;
                                     <div class="d-flex justify-content-between">
 
                                         <?php if ($isAdmin) { ?>
-                                            <button style="color:#871C2B;border:1px #B9B6B6 solid;
-                                        border-radius: 5px;font-size:15px;"
-                                                    onclick="deleteUser(<?php echo $user["id"]; ?>)">
-                                                Delete comment
-                                            </button>
+                                            <form method="post"
+                                                  action="/?page=game&id=<?php echo $game['id']; ?>&action=deletecomment">
+                                                <input type="hidden" name="commentid"
+                                                       value="<?php echo $comment['id']; ?>">
+                                                <button style="color:#871C2B;border:1px #B9B6B6 solid;
+                                        border-radius: 5px;font-size:15px;" type="submit"
+                                                        onclick="deleteUser(<?php echo $user["id"]; ?>)">
+                                                    Delete comment
+                                                </button>
+                                            </form>
                                         <?php } else { ?>
                                             <a href="#"></a>
                                         <?php } ?>
